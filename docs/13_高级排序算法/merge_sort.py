@@ -9,7 +9,7 @@ def merge_sort(seq):
         left_half = merge_sort(seq[:mid])
         right_half = merge_sort(seq[mid:])
 
-        # 合并兩個有序的数组
+        # 合并兩個有序的数組
         new_seq = merge_sorted_list(left_half, right_half)
         return new_seq
 

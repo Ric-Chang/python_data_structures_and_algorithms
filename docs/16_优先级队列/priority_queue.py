@@ -40,12 +40,12 @@ class MaxHeap(object):
     插入操作：保持堆属性和完全二叉树属性, sift-up 操作维持堆属性
     extract操作：只获取根節點數據，并把树最底层最右節點copy到根節點後，sift-down操作维持堆属性
 
-    用数组實現heap，从根節點開始，从上往下从左到右给每個節點编号，则根據完全二叉树的
+    用数組實現heap，從根節點開始，從上往下從左到右给每個節點编号，则根據完全二叉树的
     性质，给定一個節點i， 其父亲和孩子節點的编号分别是:
         parent = (i-1) // 2
         left = 2 * i + 1
         rgiht = 2 * i + 2
-    使用数组實現堆一方面效率更高，節省树節點的内存占用，一方面還可以避免复杂的指針操作，减少
+    使用数組實現堆一方面效率更高，節省树節點的内存占用，一方面還可以避免复杂的指針操作，减少
     调试难度。
 
     """
@@ -88,7 +88,7 @@ class MaxHeap(object):
         largest = ndx
         if (left < self._count and     # 有左孩子
                 self._elements[left] >= self._elements[largest] and
-                self._elements[left] >= self._elements[right]):  # 原书這個地方没写實际上找的未必是largest
+                self._elements[left] >= self._elements[right]):  # 原书這個地方没写實際上找的未必是largest
             largest = left
         elif right < self._count and self._elements[right] >= self._elements[largest]:
             largest = right
@@ -103,7 +103,7 @@ class PriorityQueue(object):
         self._maxheap = MaxHeap(maxsize)
 
     def push(self, priority, value):
-        entry = (priority, value)    # 注意這裡把這個 tuple push进去，python 比较 tuple 从第一個開始比较
+        entry = (priority, value)    # 注意這裡把這個 tuple push进去，python 比较 tuple 從第一個開始比较
         self._maxheap.add(entry)
 
     def pop(self, with_priority=False):

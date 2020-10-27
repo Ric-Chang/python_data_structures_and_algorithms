@@ -3,7 +3,7 @@
 
 def quicksort(array):
     size = len(array)
-    if not array or size < 2:  # NOTE: 遞迴出口，空数组或者只有一個元素的数组都是有序的
+    if not array or size < 2:  # NOTE: 遞迴出口，空数組或者只有一個元素的数組都是有序的
         return array
     pivot_idx = 0
     pivot = array[pivot_idx]
@@ -27,14 +27,14 @@ def quicksort_inplace(array, beg, end):    # 注意這裡我們都用左闭右�
 
 
 def partition(array, beg, end):
-    """對给定数组执行 partition 操作，返回新的 pivot 位置"""
+    """對给定数組执行 partition 操作，返回新的 pivot 位置"""
     pivot_index = beg
     pivot = array[pivot_index]
     left = pivot_index + 1
     right = end - 1    # 開區間，最後一個元素位置是 end-1     [0, end-1] or [0: end)，括号表示開區間
 
     while True:
-        # 从左邊找到比 pivot 大的
+        # 從左邊找到比 pivot 大的
         while left <= right and array[left] < pivot:
             left += 1
 
@@ -73,10 +73,10 @@ def test_quicksort_inplace():
 
 
 def nth_element(array, beg, end, nth):
-    """查找一個数组第 n 大元素"""
+    """查找一個数組第 n 大元素"""
     if beg < end:
         pivot_idx = partition(array, beg, end)
-        if pivot_idx == nth - 1:    # 数组小标从 0 開始
+        if pivot_idx == nth - 1:    # 数組小標從 0 開始
             return array[pivot_idx]
         elif pivot_idx > nth - 1:
             return nth_element(array, beg, pivot_idx, nth)

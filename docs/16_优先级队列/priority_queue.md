@@ -32,7 +32,7 @@ class PriorityQueue(object):
         self._maxheap = MaxHeap(maxsize)
 
     def push(self, priority, value):
-        # 注意這裡把這個 tuple push 进去，python 比较 tuple 从第一個開始比较
+        # 注意這裡把這個 tuple push 进去，python 比较 tuple 從第一個開始比较
         # 這样就很巧妙地實現了按照優先级排序
         entry = (priority, value)    # 入队的时候會根據 priority 维持堆的特性
         self._maxheap.add(entry)

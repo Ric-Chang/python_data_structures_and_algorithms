@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# 从数组和列表章复制的代碼
+# 從数組和列表章复制的代碼
 
 
 class Array(object):
@@ -28,9 +28,9 @@ class Array(object):
 
 
 class Slot(object):
-    """定義一個 hash 表 数组的槽
+    """定義一個 hash 表 数組的槽
     注意，一個槽有三種状态，看你能否想明白。相比鏈接法解决冲突，二次探查法删除一個 key 的操作稍微复杂。
-    1.从未使用 HashMap.UNUSED。此槽没有被使用和冲突過，查找时只要找到 UNUSED 就不用再继续探查了
+    1.從未使用 HashMap.UNUSED。此槽没有被使用和冲突過，查找时只要找到 UNUSED 就不用再继续探查了
     2.使用過但是 remove 了，此时是 HashMap.EMPTY，该探查點後面的元素扔可能是有key
     3.槽正在使用 Slot 節點
     """
@@ -134,7 +134,7 @@ class HashTable(object):
                 yield slot.key
 
 #########################################
-# 上邊是从 哈希表章 拷贝過來的代碼，我們會直接继承 HashTable 實現 dict
+# 上邊是從 哈希表章 拷贝過來的代碼，我們會直接继承 HashTable 實現 dict
 #########################################
 
 

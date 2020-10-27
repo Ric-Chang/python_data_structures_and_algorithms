@@ -8,8 +8,8 @@
 
 二叉查找树是這样一種二叉树結構，它的每個節點包含一個 key 和它附带的數據，對于每個内部節點 V：
 
-- 所有 key 小于 V 的都被存储在 V 的左子树
-- 所有 key 大于 V 的都存储在 V 的右子树
+- 所有 key 小于 V 的都被存儲在 V 的左子树
+- 所有 key 大于 V 的都存儲在 V 的右子树
 
 ![](./bst.png)
 
@@ -72,7 +72,7 @@ bst = BST.build_from(NODE_LIST)
 
 ## 查找
 如何查找一個指定的節點呢，根據定義我們知道每個内部節點左子树的 key 都比它小，右子树的 key 都比它大，所以
-對于带查找的節點 search_key，从根節點開始，如果 search_key 大于當前 key，就去右子树查找，否则去左子树查找。 一直到當前節點是 None 了說明没找到對应 key。
+對于带查找的節點 search_key，從根節點開始，如果 search_key 大于當前 key，就去右子树查找，否则去左子树查找。 一直到當前節點是 None 了說明没找到對应 key。
 
 ![](./bst_search.png)
 
@@ -118,7 +118,7 @@ bst = BST.build_from(NODE_LIST)
 
 ## 插入
 插入節點的时候我們需要一直保持 BST 的性质，每次插入一個節點，我們都通過遞迴比较把它放到正确的位置。
-你會發现新節點总是被作為叶子結點插入。（請你思考這是為什么）
+你會發现新節點总是被作為叶子結點插入。（請你思考這是為什麼）
 
 ![](./bst_insert.png)
 
@@ -171,12 +171,12 @@ bst = BST.build_from(NODE_LIST)
 ![](./bst_remove_node_with_one_child.png)
 
 #### 删除有兩個孩子的内部節點
-假如我們想删除 12 這個節點改怎么做呢？你的第一反应可能是按照下图的方式：
+假如我們想删除 12 這個節點改怎麼做呢？你的第一反应可能是按照下图的方式：
 
 ![](./remove_interior_replace.png)
 
 但是這種方式可能會影响树的高度，降低查找的效率。這裡我們用另一種非常巧妙的方式。
-還记得上邊提到的嗎，如果你中序遍历 BST 并且输出每個節點的 key，你會發现就是一個有序的数组。
+還记得上邊提到的嗎，如果你中序遍历 BST 并且输出每個節點的 key，你會發现就是一個有序的数組。
 `[1 4 12 23 29 37 41 60 71 84 90 100]`。這裡我們定義兩個概念，逻辑前任(predecessor)和後继(successor)，請看下图:
 
 ![](./predecessor_successor.png)
@@ -185,7 +185,7 @@ bst = BST.build_from(NODE_LIST)
 
 - 找到待删除節點 N(12) 的後继節點 S(23)
 - 复制節點 S 到節點 N
-- 从 N 的右子树中删除節點 S，并更新其删除後继節點後的右子树
+- 從 N 的右子树中删除節點 S，并更新其删除後继節點後的右子树
 
 說白了就是找到後继并且替换，這裡之所以能保证這種方法是正确的，你會發现替换後依旧是保持了 BST 的性质。
 有個問題是如何找到後继節點呢？待删除節點的右子树的最小的節點不就是後继嘛，上邊我們已經實現了找到最小 key 的方法了。
@@ -214,7 +214,7 @@ bst = BST.build_from(NODE_LIST)
                     return subtree.left   # 返回它的孩子并让它的父亲指過去
                 else:
                     return subtree.right
-            else:  # 俩孩子，寻找後继節點替换，并从待删節點的右子树中删除後继節點
+            else:  # 俩孩子，寻找後继節點替换，并從待删節點的右子树中删除後继節點
                 successor_node = self._bst_min_node(subtree.right)
                 subtree.key, subtree.value = successor_node.key, successor_node.value
                 subtree.right = self._bst_remove(subtree.right, successor_node.key)
@@ -243,8 +243,8 @@ bst = BST.build_from(NODE_LIST)
 
 # 延伸閱讀
 - 《Data Structures and Algorithms in Python》14 章，树的概念和算法還有很多，我們這裡介绍最基本的帮你打個基础
-- 了解红黑树。普通二叉查找树有個很大的問題就是难以保证树的平衡，极端情况下某些節點可能會非常深，导致查找複雜度大幅退化。而平衡二叉树就是為了解决這個問題。請搜索對应资料了解下。
-- 了解 mysql 索引使用的 B-Tree 結構(多路平衡查找树)，這個是後端面试數據库的常考點。想想為什么？當元素非常多的时候，二叉树的深度會很深，导致多次磁盘查找。[从B树、B+树、B*树谈到R 树](https://blog.csdn.net/v_JULY_v/article/details/6530142)
+- 了解红黑树。普通二叉查找树有個很大的問題就是难以保证树的平衡，极端情况下某些節點可能會非常深，导致查找複雜度大幅退化。而平衡二叉树就是為了解决這個問題。請搜索對应資料了解下。
+- 了解 mysql 索引使用的 B-Tree 結構(多路平衡查找树)，這個是後端面试資料庫的常考點。想想為什麼？當元素非常多的时候，二叉树的深度會很深，导致多次磁盘查找。[從B树、B+树、B*树谈到R 树](https://blog.csdn.net/v_JULY_v/article/details/6530142)
 
 
 # Leetcode

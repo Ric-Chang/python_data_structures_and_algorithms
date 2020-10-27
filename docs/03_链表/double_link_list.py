@@ -60,7 +60,7 @@ class CircularDoubleLinkedList(object):
 
     def remove(self, node):      # O(1)，傳入node 而不是 value 我們就能實現 O(1) 删除
         """remove
-        :param node  # 在 lru_cache 里實际上根據key 保存了整個node:
+        :param node  # 在 lru_cache 里實際上根據key 保存了整個node:
         """
         if node is self.root:
             return

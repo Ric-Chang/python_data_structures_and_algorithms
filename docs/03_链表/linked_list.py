@@ -59,9 +59,9 @@ class LinkedList(object):
             yield node.value
 
     def iter_node(self):
-        """遍历 从 head 節點到 tail 節點"""
+        """遍历 從 head 節點到 tail 節點"""
         curnode = self.root.next
-        while curnode is not self.tailnode:    # 从第一個節點開始遍历
+        while curnode is not self.tailnode:    # 從第一個節點開始遍历
             yield curnode
             curnode = curnode.next    # 移動到下一個節點
         if curnode is not None:
@@ -86,7 +86,7 @@ class LinkedList(object):
         return -1  # 表明删除失败
 
     def find(self, value):    # O(n)
-        """ 查找一個節點，返回序号，从 0 開始
+        """ 查找一個節點，返回序号，從 0 開始
 
         :param value:
         """
@@ -107,7 +107,7 @@ class LinkedList(object):
         self.length -= 1
         value = headnode.value
 
-        if self.tailnode is headnode:   # 勘誤：增加單節點删除 tailnode 处理
+        if self.tailnode is headnode:   # 勘誤：增加單節點删除 tailnode 處理
             self.tailnode = None
         del headnode
         return value
@@ -122,7 +122,7 @@ class LinkedList(object):
     def reverse(self):
         """反转鏈表"""
         curnode = self.root.next
-        self.tailnode = curnode  # 记得更新 tailnode，多了這個属性处理起來經常忘记
+        self.tailnode = curnode  # 记得更新 tailnode，多了這個属性處理起來經常忘记
         prevnode = None
 
         while curnode:

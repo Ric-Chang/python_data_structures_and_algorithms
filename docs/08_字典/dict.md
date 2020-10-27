@@ -2,13 +2,13 @@
 
 上一章我們介绍了哈希表，其實 python 内置的 dict 就是用哈希表實現的，所以這一章實現 dict 就非常簡單了。
 當然 cpython 使用的是 c 语言實現的，远比我們写的复杂得多 (cpython/Objects/dictobject.c)。
-上一章我們用 python 自己写的一個 Array 來代表定长数组，然後用它實現的 HashTable，它支持三個最基本的方法
+上一章我們用 python 自己写的一個 Array 來代表定长数組，然後用它實現的 HashTable，它支持三個最基本的方法
 
 - add(key ,value): 有 key 则更新，否则插入
 - get(key, default=None): 或者 key 的值，不存在返回默认值 None
-- remove(key): 删除一個 key，這裡其實不是真删除，而是标记為 Empty
+- remove(key): 删除一個 key，這裡其實不是真删除，而是標记為 Empty
 
-字典最常使用的场景就是 k,v 存储，經常用作缓存，它的 key 值是唯一的。
+字典最常使用的场景就是 k,v 存儲，經常用作缓存，它的 key 值是唯一的。
 内置库 collections.OrderedDict 還保持了 key 的添加顺序，其實用我們之前實現的鏈表也能自己實現一個 OrderedDict。
 
 # 實現 dict ADT
@@ -26,7 +26,7 @@ class DictADT(HashTable):
 影片里我們将演示如何實現這些方法，并且写單測验证正确性。
 
 # Hashable
-作為 dict 的 key 必须是可哈希的，也就是說不能是 list 等可变對象。不信你在 ipython 里运行如下代碼：
+作為 dict 的 key 必须是可哈希的，也就是說不能是 list 等可变對象。不信你在 ipython 里運行如下代碼：
 
 ```py
 d = dict()
@@ -49,7 +49,7 @@ All of Python’s immutable built-in objects are hashable, while no mutable cont
 - 你能在哈希表的基础上實現 dict 的其他操作嗎？
 - 對于 python 來說，哪些内置數據类型是可哈希的呢？list, dict, tuple, set 等类型哪些可以作為字典的 key 呢?
 - 你了解可变對象和不可变對象的區别嗎？
-- 你了解 python 的 hash 函数嗎？你了解 python 的`__hash__`  和 `__eq__` 魔術方法嗎？它们何时被调用
+- 你了解 python 的 hash 函数嗎？你了解 python 的`__hash__`  和 `__eq__` 魔術方法嗎？它們何时被调用
 
 # 延伸閱讀
 閱讀 python 文档關于 dict 的相關内容

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-# NOTE: 从 array_and_list 第一章拷贝的代碼
+# NOTE: 從 array_and_list 第一章拷贝的代碼
 class Array(object):
 
     def __init__(self, size=32):

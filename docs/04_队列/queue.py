@@ -58,9 +58,9 @@ class LinkedList(object):
             yield node.value
 
     def iter_node(self):
-        """遍历 从 head 節點到 tail 節點"""
+        """遍历 從 head 節點到 tail 節點"""
         curnode = self.root.next
-        while curnode is not self.tailnode:    # 从第一個節點開始遍历
+        while curnode is not self.tailnode:    # 從第一個節點開始遍历
             yield curnode
             curnode = curnode.next    # 移動到下一個節點
         yield curnode
@@ -83,7 +83,7 @@ class LinkedList(object):
         return -1  # 表明删除失败
 
     def find(self, value):    # O(n)
-        """ 查找一個節點，返回序号，从 0 開始
+        """ 查找一個節點，返回序号，從 0 開始
 
         :param value:
         """
