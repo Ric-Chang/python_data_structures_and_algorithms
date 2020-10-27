@@ -141,7 +141,7 @@ class HashTable(object):
 class SetADT(HashTable):
 
     def add(self, key):
-        # 集合其实就是一個 dict，只不過我們把它的 value 设置成 1
+        # 集合其實就是一個 dict，只不過我們把它的 value 设置成 1
         return super(SetADT, self).add(key, True)
 
     def __and__(self, other_set):

@@ -88,7 +88,7 @@ class MaxHeap(object):
         largest = ndx
         if (left < self._count and     # 有左孩子
                 self._elements[left] >= self._elements[largest] and
-                self._elements[left] >= self._elements[right]):  # 原书這個地方没写实际上找的未必是largest
+                self._elements[left] >= self._elements[right]):  # 原书這個地方没写實际上找的未必是largest
             largest = left
         elif right < self._count and self._elements[right] >= self._elements[largest]:
             largest = right

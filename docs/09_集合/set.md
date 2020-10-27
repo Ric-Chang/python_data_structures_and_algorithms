@@ -1,7 +1,7 @@
 # 集合 set
 
 集合是一種不包含重复元素的數據結構，經常用來判断是否重复這種操作，或者集合中是否存在一個元素。
-這一章講集合，实际上它的底层也是哈希表實現的，所以像實現 DictADT 一样，借助 HashTable 實現它也比较簡單。
+這一章講集合，實际上它的底层也是哈希表實現的，所以像實現 DictADT 一样，借助 HashTable 實現它也比较簡單。
 
 
 # 集合操作
@@ -12,7 +12,7 @@
 - 交集: A & B，表示同时在 A 和 B 中的元素。 python 中重载  `__and__` 實現
 - 并集: A | B，表示在 A 或者 B 中的元素，兩個集合相加。python 中重载 `__or__` 實現
 - 差集:  A - B，表示在 A 中但是不在 B 中的元素。 python 中重载 `__sub__` 實現
-- 對称差: A ^ B，返回在 A 或 B 但是不在 A、B 中都出现的元素。其实就是 (A|B) - (A&B)， python 中重载 `__xor__` 實現
+- 對称差: A ^ B，返回在 A 或 B 但是不在 A、B 中都出现的元素。其實就是 (A|B) - (A&B)， python 中重载 `__xor__` 實現
 
 這裡使用的  &, |, -, ^ 在 python 内置的 set 實現中都是重载了内置的运算符。這裡我們也用這種方式實現，
 具體實現我會在影片里演示。python 同样實現了  intersection, union, difference, symmetric_difference 這四個方法，
@@ -26,13 +26,13 @@
 
 
 # 實現一個 set ADT
-如何實現一個集合的 ADT 呢，其实還是個哈希表，哈希表不是有 key 和 value 嘛，咱把 value 置為 1 不就行了。
+如何實現一個集合的 ADT 呢，其實還是個哈希表，哈希表不是有 key 和 value 嘛，咱把 value 置為 1 不就行了。
 
 ```py
 class SetADT(HashTable):
 
     def add(self, key):
-        # 集合其实就是一個 dict，只不過我們把它的 value 设置成 1
+        # 集合其實就是一個 dict，只不過我們把它的 value 设置成 1
         return super(SetADT, self).add(key, True)
 ```
 

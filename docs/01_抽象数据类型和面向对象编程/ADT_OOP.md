@@ -3,7 +3,7 @@
 举個例子，在 python 中我們經常使用的 list
 
 ```py
-l = list()    # 实例化一個 list 對象 l
+l = list()    # 實例化一個 list 對象 l
 l.append(1)    # 调用 l 的 append 方法
 l.append(2)
 l.remove(1)
@@ -17,7 +17,7 @@ print(len(l))    # 调用對象的 `__len__` 方法
 
 # 什么是抽象數據类型 ADT
 
-实际上 python 内置的 list 就可以看成一種抽象數據类型。
+實际上 python 内置的 list 就可以看成一種抽象數據类型。
 
 ADT: Abstract Data Type，抽象數據类型，我們在组合已有的數據結構來實現一種新的數據类型， ADT 定義了类型的數據和操作。
 
@@ -42,7 +42,7 @@ class Bag:
 
 
 # 小問題：
-- 你了解 python 的魔術方法嗎？ 比如 `__len__` ，调用 len(l) 的时候发生了什么？
+- 你了解 python 的魔術方法嗎？ 比如 `__len__` ，调用 len(l) 的时候發生了什么？
 - 你了解單測嗎？我們以後将使用 pytest 运行單元測试，保证我們實現的數據結構和算法是正确的。你可以网上搜索下它的簡單用法
 
 # 延伸閱讀：

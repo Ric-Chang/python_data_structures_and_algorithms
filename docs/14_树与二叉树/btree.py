@@ -67,7 +67,7 @@ class BinTree(object):
             self.preorder_trav(subtree.right)
 
     def preorder_trav_use_stack(self, subtree):
-        """遞迴的方式其实是计算机帮我們實現了栈結構，我們可以自己显示的用栈來實現"""
+        """遞迴的方式其實是计算机帮我們實現了栈結構，我們可以自己显示的用栈來實現"""
         s = Stack()
         if subtree:
             s.push(subtree)

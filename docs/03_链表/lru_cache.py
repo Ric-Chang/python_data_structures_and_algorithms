@@ -13,12 +13,12 @@ def fib(n):
 
 
 """
-下邊就來写一個缓存装饰器來優化它。传统方法是用個数组记录之前计算過的值，但是這種方式不够 Pythonic
+下邊就來写一個缓存装饰器來優化它。傳统方法是用個数组记录之前计算過的值，但是這種方式不够 Pythonic
 """
 
 
 def cache(func):
-    """先引入一個簡單的装饰器缓存，其实原理很簡單，就是内部用一個字典缓存已經计算過的結果"""
+    """先引入一個簡單的装饰器缓存，其實原理很簡單，就是内部用一個字典缓存已經计算過的結果"""
     store = {}
 
     @wraps(func)
@@ -43,7 +43,7 @@ def f(n):
 問題來了，假如空間有限怎么办，我們不可能一直向缓存塞東西，當缓存达到一定個数之後，我們需要一種策略踢出一些元素，
 用來给新的元素腾出空間。
 一般缓存失效策略有
-- LRU(Least-Recently-Used): 替换掉最近請求最少的對象，实际中使用最广。cpu缓存淘汰和虚拟内存效果好，web应用欠佳
+- LRU(Least-Recently-Used): 替换掉最近請求最少的對象，實际中使用最广。cpu缓存淘汰和虚拟内存效果好，web应用欠佳
 - LFU(Least-Frequently-Used): 缓存污染問題(一個先前流行的缓存對象會在缓存中驻留很长時間)
 - First in First out(FIFO)
 - Random Cache: 随机选一個删除
@@ -70,7 +70,7 @@ LRU 是常用的一個，比如 redis 就實現了這個策略，這裡我們來
 class LRUCache:
     def __init__(self, capacity=128):
         self.capacity = capacity
-        # 借助 OrderedDict 我們可以快速實現一個 LRUCache，OrderedDict 内部其实也是使用循環双端鏈表實現的
+        # 借助 OrderedDict 我們可以快速實現一個 LRUCache，OrderedDict 内部其實也是使用循環双端鏈表實現的
         # OrderedDict 有兩個重要的函数用來實現 LRU，一個是 move_to_end，一個是 popitem，請自己看文档
         self.od = OrderedDict()
 
@@ -92,9 +92,9 @@ class LRUCache:
         """
         一個簡單的 LRU 實現。有一些問題需要思考下：
 
-        - 這裡為了简化默认参数只有一個数字 n，假如可以传入多個参数，如何确定缓存的key 呢？
+        - 這裡為了简化默认参数只有一個数字 n，假如可以傳入多個参数，如何确定缓存的key 呢？
         - 這裡實現没有考虑線程安全的問題，要如何才能實現線程安全的 LRU 呢？當然如果不是多線程环境下使用是不需要考虑的
-        - 假如這裡没有用内置的 dict，你能使用 redis 來實現這個 LRU 嗎，如果使用了 redis，我們可以存储更多數據到服务器。而使用字典实际上是缓存了Python进程里(localCache)。
+        - 假如這裡没有用内置的 dict，你能使用 redis 來實現這個 LRU 嗎，如果使用了 redis，我們可以存储更多數據到服务器。而使用字典實际上是缓存了Python进程里(localCache)。
         - 這裡只是實現了 lru 策略，你能同时實現一個超时 timeout 参数嗎？比如像是memcache 實現的 lazy expiration 策略
         - LRU有個缺點就是，對于周期性的數據訪問會导致命中率迅速下降，有一種優化是 LRU-K，訪問了次数达到 k 次才會将數據放入缓存
         """

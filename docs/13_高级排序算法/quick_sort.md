@@ -4,7 +4,7 @@
 和归并排序一样，快排也是一種分而治之(divide and conquer)的策略。归并排序把数组遞迴成只有單個元素的数组，之後再不断兩兩
 合并，最後得到一個有序数组。這裡的遞迴基本條件就是只包含一個元素的数组，當数组只包含一個元素的时候，我們可以认為它本來就是有序的（當然空数组也不用排序）。
 
-快排的工作過程其实比较簡單，三步走：
+快排的工作過程其實比较簡單，三步走：
 
 - 选择基准值 pivot 将数组分成兩個子数组：小于基准值的元素和大于基准值的元素。這個過程称之為 partition
 
@@ -41,14 +41,14 @@ def test_quicksort():
 這裡我們就來優化一下它，實現 inplace 排序并且改善下 partition 操作。新的代碼大概如下：
 
 ```py
-def quicksort_inplace(array, beg, end):    # 注意這裡我們都用左闭右開區間，end 传入 len(array)
+def quicksort_inplace(array, beg, end):    # 注意這裡我們都用左闭右開區間，end 傳入 len(array)
     if beg < end:    # beg == end 的时候遞迴出口
         pivot = partition(array, beg, end)
         quicksort_inplace(array, beg, pivot)
         quicksort_inplace(array, pivot+1, end)
 ```
 
-能否實現只遍历一次数组就可以完成 partition 操作呢？实际上是可以的。我們设置首位俩個指針 left, right，兩個指針不断向中間收拢。如果遇到 left 位置的元素大于 pivot 并且 right 指向的元素小于 pivot，我們就交换這俩元素，當 left > right 的时候退出就行了，這样實現了一次遍历就完成了 partition。如果你感覺懵逼，纸上画画就立马明白了。我們來撸代碼實現：
+能否實現只遍历一次数组就可以完成 partition 操作呢？實际上是可以的。我們设置首位俩個指針 left, right，兩個指針不断向中間收拢。如果遇到 left 位置的元素大于 pivot 并且 right 指向的元素小于 pivot，我們就交换這俩元素，當 left > right 的时候退出就行了，這样實現了一次遍历就完成了 partition。如果你感覺懵逼，纸上画画就立马明白了。我們來撸代碼實現：
 
 ![](./partition.png)
 
@@ -99,10 +99,10 @@ T(n) = 2T(n/2) + n
 
 # 思考题
 - 請你补充 quicksort_inplace 的單元測试
-- 最坏的情况下快排的時間複雜度是多少？什么时候會发生這種情况？
+- 最坏的情况下快排的時間複雜度是多少？什么时候會發生這種情况？
 - 我們實現的快排是稳定的啵？
 - 选择基准值如果选不好就可能导致複雜度升高，算导中提到了一種『median of 3』策略，就是說选择 pivot 的时候 从子数组中随机选三個元素，再取它的中位数，你能實現這個想法嗎？這裡我們的代碼很簡單地取了第一個元素作為 pivot
-- 利用快排中的 partition 操作，我們還能實現另一個算法，nth_element，快速查找一個无序数组中的第 n 大元素，請你嘗試實現它并编写單測。其实這個函数是 C++ STL 中的一個函数。
+- 利用快排中的 partition 操作，我們還能實現另一個算法，nth_element，快速查找一個无序数组中的第 n 大元素，請你嘗試實現它并编写單測。其實這個函数是 C++ STL 中的一個函数。
 - 你知道 Python 内置的 sorted 如何實現的嗎？請你 Google 相關资料了解下。很多内置的排序都使用了快排的改良版。
 
 

@@ -13,7 +13,7 @@ class Node(object):
 
 class CircularDoubleLinkedList(object):
     """循環双端鏈表 ADT
-    多了個循環其实就是把 root 的 prev 指向 tail 節點，串起來
+    多了個循環其實就是把 root 的 prev 指向 tail 節點，串起來
     """
 
     def __init__(self, maxsize=None):
@@ -32,7 +32,7 @@ class CircularDoubleLinkedList(object):
     def tailnode(self):
         return self.root.prev
 
-    def append(self, value):    # O(1), 你发现一般不用 for 循環的就是 O(1)，有限個步骤
+    def append(self, value):    # O(1), 你發现一般不用 for 循環的就是 O(1)，有限個步骤
         if self.maxsize is not None and len(self) >= self.maxsize:
             raise Exception('LinkedList is Full')
         node = Node(value=value)
@@ -61,9 +61,9 @@ class CircularDoubleLinkedList(object):
             self.root.next = node
         self.length += 1
 
-    def remove(self, node):      # O(1)，传入node 而不是 value 我們就能實現 O(1) 删除
+    def remove(self, node):      # O(1)，傳入node 而不是 value 我們就能實現 O(1) 删除
         """remove
-        :param node  # 在 lru_cache 里实际上根據key 保存了整個node:
+        :param node  # 在 lru_cache 里實际上根據key 保存了整個node:
         """
         if node is self.root:
             return

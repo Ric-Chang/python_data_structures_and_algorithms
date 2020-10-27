@@ -86,7 +86,7 @@ def dfs_use_stack(graph, start):
         if cur_node not in searched:
             print(cur_node)
             searched.add(cur_node)
-            # 請讀者思考這裡我為啥加了 reversed，其实不加上是可以的，你看下代碼输出
+            # 請讀者思考這裡我為啥加了 reversed，其實不加上是可以的，你看下代碼输出
             for node in reversed(graph[cur_node]):
                 stack.push(node)
 
