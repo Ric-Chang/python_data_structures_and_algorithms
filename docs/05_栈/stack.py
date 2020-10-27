@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# NOTE: 这里拷贝的 double_link_list.py 里的代码
+# NOTE: 這裡拷贝的 double_link_list.py 里的代碼
 
 from collections import deque
 
@@ -12,8 +12,8 @@ class Node(object):
 
 
 class CircularDoubleLinkedList(object):
-    """循环双端链表 ADT
-    多了个循环其实就是把 root 的 prev 指向 tail 节点，串起来
+    """循環双端鏈表 ADT
+    多了個循環其实就是把 root 的 prev 指向 tail 節點，串起來
     """
 
     def __init__(self, maxsize=None):
@@ -32,7 +32,7 @@ class CircularDoubleLinkedList(object):
     def tailnode(self):
         return self.root.prev
 
-    def append(self, value):    # O(1), 你发现一般不用 for 循环的就是 O(1)，有限个步骤
+    def append(self, value):    # O(1), 你发现一般不用 for 循環的就是 O(1)，有限個步骤
         if self.maxsize is not None and len(self) >= self.maxsize:
             raise Exception('LinkedList is Full')
         node = Node(value=value)
@@ -61,9 +61,9 @@ class CircularDoubleLinkedList(object):
             self.root.next = node
         self.length += 1
 
-    def remove(self, node):      # O(1)，传入node 而不是 value 我们就能实现 O(1) 删除
+    def remove(self, node):      # O(1)，传入node 而不是 value 我們就能實現 O(1) 删除
         """remove
-        :param node  # 在 lru_cache 里实际上根据key 保存了整个node:
+        :param node  # 在 lru_cache 里实际上根據key 保存了整個node:
         """
         if node is self.root:
             return
@@ -87,7 +87,7 @@ class CircularDoubleLinkedList(object):
             yield node.value
 
     def iter_node_reverse(self):
-        """相比单链表独有的反序遍历"""
+        """相比單鏈表独有的反序遍历"""
         if self.root.prev is self.root:
             return
         curnode = self.root.prev
@@ -98,14 +98,14 @@ class CircularDoubleLinkedList(object):
 
 
 ############################################################
-# 分割线，下边是本章 内容实现
+# 分割線，下邊是本章 内容實現
 ############################################################
 
 
-class Deque(CircularDoubleLinkedList):   # 注意这里我们用到了继承，嗯，貌似我说过不会用啥 OOP 特性的，抱歉
+class Deque(CircularDoubleLinkedList):   # 注意這裡我們用到了继承，嗯，貌似我說過不會用啥 OOP 特性的，抱歉
 
     def pop(self):
-        """删除尾节点"""
+        """删除尾節點"""
         if len(self) == 0:
             raise Exception('empty')
         tailnode = self.tailnode()
@@ -144,7 +144,7 @@ def test_deque():
 
 class Stack(object):
     def __init__(self):
-        self.deque = Deque()   # 你可以很容易替换为 python 内置的 collections.deque
+        self.deque = Deque()   # 你可以很容易替换為 python 内置的 collections.deque
 
     def push(self, value):
         self.deque.append(value)
@@ -179,7 +179,7 @@ def test_stack():
     assert s.pop() == 0
 
     import pytest    # pip install pytest
-    with pytest.raises(Exception) as excinfo:   # 我们来测试是否真的抛出了异常
+    with pytest.raises(Exception) as excinfo:   # 我們來測试是否真的抛出了异常
         s.pop()
     assert 'empty' in str(excinfo.value)
 

@@ -9,7 +9,7 @@ arr = array('u', 'asdf')
 print(arr[0], arr[1], arr[2], arr[3])
 
 
-# 实现定长的 Array ADT，省略了边界检查等
+# 實現定长的 Array ADT，省略了邊界检查等
 
 class Array(object):
 

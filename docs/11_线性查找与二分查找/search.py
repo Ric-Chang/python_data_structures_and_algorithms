@@ -45,13 +45,13 @@ def binary_search_recursive(sorted_array, beg, end, val):
     if sorted_array[mid] == val:
         return mid
     elif sorted_array[mid] > val:
-        return binary_search_recursive(sorted_array, beg, mid, val)    # 注意我依然假设 beg, end 区间是左闭右开的
+        return binary_search_recursive(sorted_array, beg, mid, val)    # 注意我依然假设 beg, end 區間是左闭右開的
     else:
         return binary_search_recursive(sorted_array, mid+1, end, val)
 
 
 def test_binary_search_recursive():
-    # 我们测试所有值和边界条件
+    # 我們測试所有值和邊界條件
     a = list(range(10))
     for i in a:
         assert binary_search_recursive(a, 0, len(a), i) == i

@@ -1,65 +1,65 @@
 # 树和二叉树
-前面我们讲了两种使用分治和递归解决排序问题的归并排序和快速排序，堆排序先就此打住，因为涉及到树的概念，所以我们先来讲讲树。
-讲完了树之后后面我们开始介绍一种有用的数据结构堆(heap)， 以及借助堆来实现的堆排序，相比前两种排序算法要稍难理解和实现一些。
+前面我們講了兩種使用分治和遞迴解决排序問題的归并排序和快速排序，堆排序先就此打住，因為涉及到树的概念，所以我們先來講講树。
+講完了树之後後面我們開始介绍一種有用的數據結構堆(heap)， 以及借助堆來實現的堆排序，相比前兩種排序算法要稍难理解和實現一些。
 
 # 树
-这里先简单讲讲树的概念。树结构是一种包括节点(nodes)和边(edges)的拥有层级关系的一种结构， 它的形式和家谱树非常类似:
+這裡先簡單講講树的概念。树結構是一種包括節點(nodes)和邊(edges)的拥有层级關系的一種結構， 它的形式和家谱树非常类似:
 
 ![](./family_tree.png)
 
-如果你了解 linux 文件结构（tree 命令），它的结构也是一棵树。我们快速看下树涉及到的一些概念：
+如果你了解 linux 文件結構（tree 命令），它的結構也是一棵树。我們快速看下树涉及到的一些概念：
 
 ![](./tree.png)
 
-- 根节点(root): 树的最上层的节点，任何非空的树都有一个节点
-- 路径(path): 从起始节点到终止节点经历过的边
-- 父亲(parent)：除了根节点，每个节点的上一层边连接的节点就是它的父亲(节点)
-- 孩子(children): 每个节点由边指向的下一层节点
-- 兄弟(siblings): 同一个父亲并且处在同一层的节点
-- 子树(subtree): 每个节点包含它所有的后代组成的子树
-- 叶子节点(leaf node): 没有孩子的节点成为叶子节点
+- 根節點(root): 树的最上层的節點，任何非空的树都有一個節點
+- 路径(path): 从起始節點到终止節點經历過的邊
+- 父亲(parent)：除了根節點，每個節點的上一层邊连接的節點就是它的父亲(節點)
+- 孩子(children): 每個節點由邊指向的下一层節點
+- 兄弟(siblings): 同一個父亲并且处在同一层的節點
+- 子树(subtree): 每個節點包含它所有的後代组成的子树
+- 叶子節點(leaf node): 没有孩子的節點成為叶子節點
 
 
 # 二叉树
 
-了解完树的结构以后，我们来看树结构里一种简单但是却比较常用的树-二叉树。
-二叉树是一种简单的树，它的每个节点最多只能包含两个孩子，以下都是一些合法的二叉树:
+了解完树的結構以後，我們來看树結構里一種簡單但是却比较常用的树-二叉树。
+二叉树是一種簡單的树，它的每個節點最多只能包含兩個孩子，以下都是一些合法的二叉树:
 
 ![](./binary_tree.png)
 ![](./binary_tree_level.png)
 
-通过上边这幅图再来看几个二叉树相关的概念:
+通過上邊這幅图再來看几個二叉树相關的概念:
 
-- 节点深度(depth): 节点对应的 level 数字
-- 树的高度(height): 二叉树的高度就是 level 数 + 1，因为 level 从 0开始计算的
-- 树的宽度(width): 二叉树的宽度指的是包含最多节点的层级的节点数
-- 树的 size：二叉树的节点总个数。
+- 節點深度(depth): 節點對应的 level 数字
+- 树的高度(height): 二叉树的高度就是 level 数 + 1，因為 level 从 0開始计算的
+- 树的宽度(width): 二叉树的宽度指的是包含最多節點的层级的節點数
+- 树的 size：二叉树的節點总個数。
 
-一棵 size 为 n 的二叉树高度最多可以是 n，最小的高度是 $ \lfloor lgn \rfloor + 1 $，这里 log 以 2 为底简写为
-lgn，和算法导论保持一致。这个结果你只需要用高中的累加公式就可以得到。
+一棵 size 為 n 的二叉树高度最多可以是 n，最小的高度是 $ \lfloor lgn \rfloor + 1 $，這裡 log 以 2 為底简写為
+lgn，和算法导论保持一致。這個結果你只需要用高中的累加公式就可以得到。
 
 # 一些特殊的二叉树
-在了解了二叉树的术语和概念之后，我们来看看一些特殊的二叉树，后续章节我们会用到：
+在了解了二叉树的術语和概念之後，我們來看看一些特殊的二叉树，後续章節我們會用到：
 
 ### 满二叉树(full binary tree)
-如果每个内部节点（非叶节点）都包含两个孩子，就成为满二叉树。下边是一些例子，它可以有多种形状：
+如果每個内部節點（非叶節點）都包含兩個孩子，就成為满二叉树。下邊是一些例子，它可以有多種形状：
 
 ![](./full_binary_tree.png)
 
 ### 完美二叉树(perfect binary tree)
-当所有的叶子节点都在同一层就是完美二叉树，毫无间隙填充了 h 层。
+當所有的叶子節點都在同一层就是完美二叉树，毫无間隙填充了 h 层。
 
 ![](./perfect_binary_tree.png)
 
 ### 完全二叉树(complete binary tree)
-当一个高度为 h 的完美二叉树减少到 h-1，并且最底层的槽被毫无间隙地从左到右填充，我们就叫它完全二叉树。
+當一個高度為 h 的完美二叉树减少到 h-1，并且最底层的槽被毫无間隙地从左到右填充，我們就叫它完全二叉树。
 下图就是完全二叉树的例子：
 
 ![](./complete_binary_tree.png)
 
 # 二叉树的表示
-说了那么多，那么怎么表示一棵二叉树呢？其实你发现会和链表有一些相似之处，一个节点，然后节点需要保存孩子的指针，我以构造下边这个二叉树为例子：
-我们先定义一个类表示节点：
+說了那么多，那么怎么表示一棵二叉树呢？其实你发现會和鏈表有一些相似之处，一個節點，然後節點需要保存孩子的指針，我以构造下邊這個二叉树為例子：
+我們先定義一個类表示節點：
 
 ![](preorder.png)
 
@@ -69,7 +69,7 @@ class BinTreeNode(object):
         self.data, self.left, self.right = data, left, right
 ```
 
-当然和链表类似，root 节点是我们的入口，于是乎定义一个 二叉树：
+當然和鏈表类似，root 節點是我們的入口，于是乎定義一個 二叉树：
 
 ```py
 class BinTree(object):
@@ -77,7 +77,7 @@ class BinTree(object):
         self.root = root
 ```
 
-怎么构造上图中的二叉树呢，似乎其他课本没找到啥例子(有些例子是写了一堆嵌套节点来定义，很难搞清楚层次关系)，我自己定义了一种方法，首先我们输入节点信息，仔细看下边代码，叶子节点的 left 和 right 都是 None，并且只有一个根节点 A:
+怎么构造上图中的二叉树呢，似乎其他课本没找到啥例子(有些例子是写了一堆嵌套節點來定義，很难搞清楚层次關系)，我自己定義了一種方法，首先我們输入節點信息，仔细看下邊代碼，叶子節點的 left 和 right 都是 None，并且只有一個根節點 A:
 
 ```py
 node_list = [
@@ -94,7 +94,7 @@ node_list = [
 ]
 ```
 
-然后我们给 BinTreeNode 定义一个 build_from 方法，当然你也可以定义一种自己的构造方法：
+然後我們给 BinTreeNode 定義一個 build_from 方法，當然你也可以定義一種自己的构造方法：
 
 ```py
 class BinTree(object):
@@ -103,10 +103,10 @@ class BinTree(object):
 
     @classmethod
     def build_from(cls, node_list):
-        """通过节点信息构造二叉树
-        第一次遍历我们构造 node 节点
-        第二次遍历我们给 root 和 孩子赋值
-        最后我们用 root 初始化这个类并返回一个对象
+        """通過節點信息构造二叉树
+        第一次遍历我們构造 node 節點
+        第二次遍历我們给 root 和 孩子赋值
+        最後我們用 root 初始化這個类并返回一個對象
 
         :param node_list: {'data': 'A', 'left': None, 'right': None, 'is_root': False}
         """
@@ -125,16 +125,16 @@ class BinTree(object):
 btree = BinTree.build_from(node_list)
 ```
 
-大功告成，这样我们就构造了一棵二叉树对象。下边我们看看它的一些常用操作。
+大功告成，這样我們就构造了一棵二叉树對象。下邊我們看看它的一些常用操作。
 
 # 二叉树的遍历
-不知道你有没有发现，二叉树其实是一种递归结构，因为单独拿出来一个 subtree 子树出来，其实它还是一棵树。那遍历它就很方便啦，我们可以直接用递归的方式来遍历它。但是当处理顺序不同的时候，树又分为三种遍历方式:
+不知道你有没有发现，二叉树其实是一種遞迴結構，因為單独拿出來一個 subtree 子树出來，其实它還是一棵树。那遍历它就很方便啦，我們可以直接用遞迴的方式來遍历它。但是當处理顺序不同的时候，树又分為三種遍历方式:
 
-- 先(根)序遍历: 先处理根，之后是左子树，然后是右子树
-- 中(根)序遍历: 先处理左子树，之后是根，最后是右子树
-- 后(根)序遍历: 先处理左子树，之后是右子树，最后是根
+- 先(根)序遍历: 先处理根，之後是左子树，然後是右子树
+- 中(根)序遍历: 先处理左子树，之後是根，最後是右子树
+- 後(根)序遍历: 先处理左子树，之後是右子树，最後是根
 
-我们来看下实现，其实算是比较直白的递归函数:
+我們來看下實現，其实算是比较直白的遞迴函数:
 
 ```py
 class BinTreeNode(object):
@@ -148,9 +148,9 @@ class BinTree(object):
 
     @classmethod
     def build_from(cls, node_list):
-        """通过节点信息构造二叉树
-        第一次遍历我们构造 node 节点
-        第二次遍历我们给 root 和 孩子赋值
+        """通過節點信息构造二叉树
+        第一次遍历我們构造 node 節點
+        第二次遍历我們给 root 和 孩子赋值
 
         :param node_list: {'data': 'A', 'left': None, 'right': None, 'is_root': False}
         """
@@ -173,9 +173,9 @@ class BinTree(object):
         :param subtree:
         """
         if subtree is not None:
-            print(subtree.data)    # 递归函数里先处理根
-            self.preorder_trav(subtree.left)   # 递归处理左子树
-            self.preorder_trav(subtree.right)    # 递归处理右子树
+            print(subtree.data)    # 遞迴函数里先处理根
+            self.preorder_trav(subtree.left)   # 遞迴处理左子树
+            self.preorder_trav(subtree.right)    # 遞迴处理右子树
 
 
 node_list = [
@@ -193,12 +193,12 @@ node_list = [
 btree = BinTree.build_from(node_list)
 btree.preorder_trav(btree.root)    # 输出 A, B, D, E, H, C, F, G, I, J
 ```
-怎么样是不是挺简单的，比较直白的递归函数。如果你不明白，视频里我们会画个图来说明。
+怎么样是不是挺簡單的，比较直白的遞迴函数。如果你不明白，影片里我們會画個图來說明。
 
 # 二叉树层序遍历
 
-除了递归的方式遍历之外，我们还可以使用层序遍历的方式。层序遍历比较直白，就是从根节点开始按照一层一层的方式遍历节点。
-我们可以从根节点开始，之后把所有当前层的孩子都按照从左到右的顺序放到一个列表里，下一次遍历所有这些孩子就可以了。
+除了遞迴的方式遍历之外，我們還可以使用层序遍历的方式。层序遍历比较直白，就是从根節點開始按照一层一层的方式遍历節點。
+我們可以从根節點開始，之後把所有當前层的孩子都按照从左到右的顺序放到一個列表里，下一次遍历所有這些孩子就可以了。
 
 ```py
     def layer_trav(self, subtree):
@@ -215,8 +215,8 @@ btree.preorder_trav(btree.root)    # 输出 A, B, D, E, H, C, F, G, I, J
             next_nodes = []
 ```
 
-还有一种方式就是使用一个队列，之前我们知道队列是一个先进先出结构，如果我们按照一层一层的顺序从左往右把节点放到一个队列里，
-也可以实现层序遍历：
+還有一種方式就是使用一個队列，之前我們知道队列是一個先进先出結構，如果我們按照一层一层的顺序从左往右把節點放到一個队列里，
+也可以實現层序遍历：
 
 ```py
     def layer_trav_use_queue(self, subtree):
@@ -232,7 +232,7 @@ btree.preorder_trav(btree.root)    # 输出 A, B, D, E, H, C, F, G, I, J
 
 
 from collections import deque
-class Queue(object):  # 借助内置的 deque 我们可以迅速实现一个 Queue
+class Queue(object):  # 借助内置的 deque 我們可以迅速實現一個 Queue
     def __init__(self):
         self._items = deque()
 
@@ -248,7 +248,7 @@ class Queue(object):  # 借助内置的 deque 我们可以迅速实现一个 Que
 
 
 # 反转二叉树
-之所以单拎出来说这个是因为 mac 下著名的 brew 工具作者据说是因为面试 google 白板编程没写出来反转二叉树跪了。然后人家就去了苹果 😂。其实吧和遍历操作相比也没啥太大区别，递归交换就是了：
+之所以單拎出來說這個是因為 mac 下著名的 brew 工具作者据說是因為面试 google 白板编程没写出來反转二叉树跪了。然後人家就去了苹果 😂。其实吧和遍历操作相比也没啥太大區别，遞迴交换就是了：
 
 ```py
     def reverse(self, subtree):
@@ -260,14 +260,14 @@ class Queue(object):  # 借助内置的 deque 我们可以迅速实现一个 Que
 
 
 # 练习题
-- 请你完成二叉树的中序遍历和后序遍历以及单元测试
-- 树的遍历我们用了 print，请你尝试换成一个 callback，这样就能自定义处理树节点的方式了。
-- 请问树的遍历操作时间复杂度是多少？假设它的 size 是 n
-- 你能用非递归的方式来实现树的遍历吗？我们知道计算机内部使用了 stack，如果我们自己模拟如何实现？请你尝试完成
-- 只根据二叉树的中序遍历和后序遍历能否确定一棵二叉树？你可以举一个反例吗？
+- 請你完成二叉树的中序遍历和後序遍历以及單元測试
+- 树的遍历我們用了 print，請你嘗試换成一個 callback，這样就能自定義处理树節點的方式了。
+- 請问树的遍历操作時間複雜度是多少？假设它的 size 是 n
+- 你能用非遞迴的方式來實現树的遍历嗎？我們知道计算机内部使用了 stack，如果我們自己模擬如何實現？請你嘗試完成
+- 只根據二叉树的中序遍历和後序遍历能否确定一棵二叉树？你可以举一個反例嗎？
 
 
-# 延伸阅读
+# 延伸閱讀
 - 《Data Structures and Algorithms in Python》 13 章 Binary Trees
 -  [https://www.geeksforgeeks.org/iterative-preorder-traversal/](https://www.geeksforgeeks.org/iterative-preorder-traversal/)
 
@@ -281,10 +281,10 @@ class Queue(object):  # 借助内置的 deque 我们可以迅速实现一个 Que
 二叉树的中序遍历
 
 - [leetcode binary-tree-postorder-traversal](https://leetcode.com/problems/binary-tree-postorder-traversal/)
-二叉树的后序遍历
+二叉树的後序遍历
 
 - [leetcode binary-tree-right-side-view](https://leetcode.com/problems/binary-tree-right-side-view/description/)
-使用树的层序遍历我们能实现一个树的左右视图，比如从一个二叉树的左边能看到哪些节点。 请你尝试做这个练习题
+使用树的层序遍历我們能實現一個树的左右视图，比如从一個二叉树的左邊能看到哪些節點。 請你嘗試做這個练习题
 
 - [leetcode construct-binary-tree-from-preorder-and-postorder-traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal/submissions/)
-根据二叉树的 前序和后序遍历，返回一颗完整的二叉树。
+根據二叉树的 前序和後序遍历，返回一颗完整的二叉树。

@@ -9,7 +9,7 @@ def fact(n):
 
 
 def print_num(n):
-    for i in range(1, n + 1):    # 注意很多编程语言使用的都是 从 0 开始的左闭右开区间, python 也不例外
+    for i in range(1, n + 1):    # 注意很多编程语言使用的都是 从 0 開始的左闭右開區間, python 也不例外
         print(i)
 
 
@@ -53,7 +53,7 @@ def print_num_use_stack(n):
 
 
 def hanoi_move(n, source, dest, intermediate):
-    if n >= 1:  # 递归出口，只剩一个盘子
+    if n >= 1:  # 遞迴出口，只剩一個盘子
         hanoi_move(n - 1, source, intermediate, dest)
         print("Move %s -> %s" % (source, dest))
         hanoi_move(n - 1, intermediate, dest, source)

@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-# 第二章拷贝的 Array 代码
+# 第二章拷贝的 Array 代碼
 
 
 class Array(object):
@@ -27,25 +27,25 @@ class Array(object):
             yield item
 
 #####################################################
-# heap 实现
+# heap 實現
 #####################################################
 
 
 class MaxHeap(object):
     """
     Heaps:
-    完全二叉树，最大堆的非叶子节点的值都比孩子大，最小堆的非叶子结点的值都比孩子小
-    Heap包含两个属性，order property 和 shape property(a complete binary tree)，在插入
-    一个新节点的时候，始终要保持这两个属性
+    完全二叉树，最大堆的非叶子節點的值都比孩子大，最小堆的非叶子結點的值都比孩子小
+    Heap包含兩個属性，order property 和 shape property(a complete binary tree)，在插入
+    一個新節點的时候，始终要保持這兩個属性
     插入操作：保持堆属性和完全二叉树属性, sift-up 操作维持堆属性
-    extract操作：只获取根节点数据，并把树最底层最右节点copy到根节点后，sift-down操作维持堆属性
+    extract操作：只获取根節點數據，并把树最底层最右節點copy到根節點後，sift-down操作维持堆属性
 
-    用数组实现heap，从根节点开始，从上往下从左到右给每个节点编号，则根据完全二叉树的
-    性质，给定一个节点i， 其父亲和孩子节点的编号分别是:
+    用数组實現heap，从根節點開始，从上往下从左到右给每個節點编号，则根據完全二叉树的
+    性质，给定一個節點i， 其父亲和孩子節點的编号分别是:
         parent = (i-1) // 2
         left = 2 * i + 1
         rgiht = 2 * i + 2
-    使用数组实现堆一方面效率更高，节省树节点的内存占用，一方面还可以避免复杂的指针操作，减少
+    使用数组實現堆一方面效率更高，節省树節點的内存占用，一方面還可以避免复杂的指針操作，减少
     调试难度。
 
     """
@@ -70,14 +70,14 @@ class MaxHeap(object):
             parent = int((ndx-1)/2)
             if self._elements[ndx] > self._elements[parent]:    # 如果插入的值大于 parent，一直交换
                 self._elements[ndx], self._elements[parent] = self._elements[parent], self._elements[ndx]
-                self._siftup(parent)    # 递归
+                self._siftup(parent)    # 遞迴
 
     def extract(self):
         if self._count <= 0:
             raise Exception('empty')
         value = self._elements[0]    # 保存 root 值
         self._count -= 1
-        self._elements[0] = self._elements[self._count]    # 最右下的节点放到root后siftDown
+        self._elements[0] = self._elements[self._count]    # 最右下的節點放到root後siftDown
         self._siftdown(0)    # 维持堆特性
         return value
 
@@ -88,7 +88,7 @@ class MaxHeap(object):
         largest = ndx
         if (left < self._count and     # 有左孩子
                 self._elements[left] >= self._elements[largest] and
-                self._elements[left] >= self._elements[right]):  # 原书这个地方没写实际上找的未必是largest
+                self._elements[left] >= self._elements[right]):  # 原书這個地方没写实际上找的未必是largest
             largest = left
         elif right < self._count and self._elements[right] >= self._elements[largest]:
             largest = right
@@ -103,7 +103,7 @@ class PriorityQueue(object):
         self._maxheap = MaxHeap(maxsize)
 
     def push(self, priority, value):
-        entry = (priority, value)    # 注意这里把这个 tuple push进去，python 比较 tuple 从第一个开始比较
+        entry = (priority, value)    # 注意這裡把這個 tuple push进去，python 比较 tuple 从第一個開始比较
         self._maxheap.add(entry)
 
     def pop(self, with_priority=False):

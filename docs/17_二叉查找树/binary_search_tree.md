@@ -1,21 +1,21 @@
 # 二叉查找树(BST)
 
-二叉树的一种应用就是来实现堆，今天我们再看看用二叉查找树(Binary Search Tree, BST)。
-前面有章节说到了查找操作，包括线性查找、二分查找、哈希查找等，线性查找效率比较低，二分又要求必须是有序的序列，
-为了维持有序插入的代价比较高、哈希查找效率很高但是浪费空间。能不能有一种插入和查找都比较快的数据结构呢？二叉查找树就是这样一种结构，可以高效地插入和查询节点。
+二叉树的一種应用就是來實現堆，今天我們再看看用二叉查找树(Binary Search Tree, BST)。
+前面有章節說到了查找操作，包括線性查找、二分查找、哈希查找等，線性查找效率比较低，二分又要求必须是有序的序列，
+為了维持有序插入的代價比较高、哈希查找效率很高但是浪费空間。能不能有一種插入和查找都比较快的數據結構呢？二叉查找树就是這样一種結構，可以高效地插入和查询節點。
 
-# BST 定义
+# BST 定義
 
-二叉查找树是这样一种二叉树结构，它的每个节点包含一个 key 和它附带的数据，对于每个内部节点 V：
+二叉查找树是這样一種二叉树結構，它的每個節點包含一個 key 和它附带的數據，對于每個内部節點 V：
 
 - 所有 key 小于 V 的都被存储在 V 的左子树
 - 所有 key 大于 V 的都存储在 V 的右子树
 
 ![](./bst.png)
 
-注意这个限制条件，可别和堆搞混了。说白了就是对于每个内部节点，左子树的 key 都比它小，右子树都比它大。
-如果中序遍历(二叉树遍历讲过了)这颗二叉树，你会发现输出的顺序正好是有序的。
-我们先来定义一下 BST 的节点结构：
+注意這個限制條件，可别和堆搞混了。說白了就是對于每個内部節點，左子树的 key 都比它小，右子树都比它大。
+如果中序遍历(二叉树遍历講過了)這颗二叉树，你會发现输出的顺序正好是有序的。
+我們先來定義一下 BST 的節點結構：
 
 ```py
 class BSTNode(object):
@@ -23,8 +23,8 @@ class BSTNode(object):
         self.key, self.value, self.left, self.right = key, value, left, right
 ```
 
-# 构造一个 BST
-我们还像之前构造二叉树一样，按照上图构造一个 BST 用来演示：
+# 构造一個 BST
+我們還像之前构造二叉树一样，按照上图构造一個 BST 用來演示：
 
 ```py
 class BST(object):
@@ -37,7 +37,7 @@ class BST(object):
         key_to_node_dict = {}
         for node_dict in node_list:
             key = node_dict['key']
-            key_to_node_dict[key] = BSTNode(key, value=key)   # 这里值暂时用 和 key一样的
+            key_to_node_dict[key] = BSTNode(key, value=key)   # 這裡值暂时用 和 key一样的
 
         for node_dict in node_list:
             key = node_dict['key']
@@ -71,12 +71,12 @@ bst = BST.build_from(NODE_LIST)
 # BST 操作
 
 ## 查找
-如何查找一个指定的节点呢，根据定义我们知道每个内部节点左子树的 key 都比它小，右子树的 key 都比它大，所以
-对于带查找的节点 search_key，从根节点开始，如果 search_key 大于当前 key，就去右子树查找，否则去左子树查找。 一直到当前节点是 None 了说明没找到对应 key。
+如何查找一個指定的節點呢，根據定義我們知道每個内部節點左子树的 key 都比它小，右子树的 key 都比它大，所以
+對于带查找的節點 search_key，从根節點開始，如果 search_key 大于當前 key，就去右子树查找，否则去左子树查找。 一直到當前節點是 None 了說明没找到對应 key。
 
 ![](./bst_search.png)
 
-好，撸代码：
+好，撸代碼：
 
 ```py
     def _bst_search(self, subtree, key):
@@ -98,9 +98,9 @@ bst = BST.build_from(NODE_LIST)
 ```
 
 
-## 获取最大和最小 key 的节点
+## 获取最大和最小 key 的節點
 
-其实还按照其定义，最小值就一直向着左子树找，最大值一直向右子树找，递归查找就行。
+其实還按照其定義，最小值就一直向着左子树找，最大值一直向右子树找，遞迴查找就行。
 
 ```py
     def _bst_min_node(self, subtree):
@@ -117,20 +117,20 @@ bst = BST.build_from(NODE_LIST)
 ```
 
 ## 插入
-插入节点的时候我们需要一直保持 BST 的性质，每次插入一个节点，我们都通过递归比较把它放到正确的位置。
-你会发现新节点总是被作为叶子结点插入。（请你思考这是为什么）
+插入節點的时候我們需要一直保持 BST 的性质，每次插入一個節點，我們都通過遞迴比较把它放到正确的位置。
+你會发现新節點总是被作為叶子結點插入。（請你思考這是為什么）
 
 ![](./bst_insert.png)
 
 ```py
     def _bst_insert(self, subtree, key, value):
-        """ 插入并且返回根节点
+        """ 插入并且返回根節點
 
         :param subtree:
         :param key:
         :param value:
         """
-        if subtree is None:   # 插入的节点一定是根节点，包括 root 为空的情况
+        if subtree is None:   # 插入的節點一定是根節點，包括 root 為空的情况
             subtree = BSTNode(key, value)
         elif key < subtree.key:
             subtree.left = self._bst_insert(subtree.left, key, value)
@@ -140,7 +140,7 @@ bst = BST.build_from(NODE_LIST)
 
     def add(self, key, value):
         node = self._bst_search(self.root, key)
-        if node is not None:   # 更新已经存在的 key
+        if node is not None:   # 更新已經存在的 key
             node.value = value
             return False
         else:
@@ -149,55 +149,55 @@ bst = BST.build_from(NODE_LIST)
             return True
 ```
 
-## 删除节点
-删除操作相比上边的操作要麻烦很多，首先需要定位一个节点，删除节点后，我们需要始终保持 BST 的性质。
-删除一个节点涉及到三种情况：
+## 删除節點
+删除操作相比上邊的操作要麻烦很多，首先需要定位一個節點，删除節點後，我們需要始终保持 BST 的性质。
+删除一個節點涉及到三種情况：
 
-- 节点是叶节点
-- 节点有一个孩子
-- 节点有两个孩子
+- 節點是叶節點
+- 節點有一個孩子
+- 節點有兩個孩子
 
-我们分别来看看三种情况下如何删除一个节点：
+我們分别來看看三種情况下如何删除一個節點：
 
-#### 删除叶节点
-这是最简单的一种情况，只需要把它的父亲指向它的指针设置为 None 就好。
+#### 删除叶節點
+這是最簡單的一種情况，只需要把它的父亲指向它的指針设置為 None 就好。
 
 ![](./bst_remove_leaf.png)
 
-#### 删除只有一个孩子的节点
-删除有一个孩子的节点时，我们拿掉需要删除的节点，之后把它的父亲指向它的孩子就行，因为根据 BST
-左子树都小于节点，右子树都大于节点的特性，删除它之后这个条件依旧满足。
+#### 删除只有一個孩子的節點
+删除有一個孩子的節點时，我們拿掉需要删除的節點，之後把它的父亲指向它的孩子就行，因為根據 BST
+左子树都小于節點，右子树都大于節點的特性，删除它之後這個條件依旧满足。
 
 ![](./bst_remove_node_with_one_child.png)
 
-#### 删除有两个孩子的内部节点
-假如我们想删除 12 这个节点改怎么做呢？你的第一反应可能是按照下图的方式：
+#### 删除有兩個孩子的内部節點
+假如我們想删除 12 這個節點改怎么做呢？你的第一反应可能是按照下图的方式：
 
 ![](./remove_interior_replace.png)
 
-但是这种方式可能会影响树的高度，降低查找的效率。这里我们用另一种非常巧妙的方式。
-还记得上边提到的吗，如果你中序遍历 BST 并且输出每个节点的 key，你会发现就是一个有序的数组。
-`[1 4 12 23 29 37 41 60 71 84 90 100]`。这里我们定义两个概念，逻辑前任(predecessor)和后继(successor)，请看下图:
+但是這種方式可能會影响树的高度，降低查找的效率。這裡我們用另一種非常巧妙的方式。
+還记得上邊提到的嗎，如果你中序遍历 BST 并且输出每個節點的 key，你會发现就是一個有序的数组。
+`[1 4 12 23 29 37 41 60 71 84 90 100]`。這裡我們定義兩個概念，逻辑前任(predecessor)和後继(successor)，請看下图:
 
 ![](./predecessor_successor.png)
 
-12 在中序遍历中的逻辑前任和后继分别是 4 和 23 节点。于是我们还有一种方法来删除 12 这个节点：
+12 在中序遍历中的逻辑前任和後继分别是 4 和 23 節點。于是我們還有一種方法來删除 12 這個節點：
 
-- 找到待删除节点 N(12) 的后继节点 S(23)
-- 复制节点 S 到节点 N
-- 从 N 的右子树中删除节点 S，并更新其删除后继节点后的右子树
+- 找到待删除節點 N(12) 的後继節點 S(23)
+- 复制節點 S 到節點 N
+- 从 N 的右子树中删除節點 S，并更新其删除後继節點後的右子树
 
-说白了就是找到后继并且替换，这里之所以能保证这种方法是正确的，你会发现替换后依旧是保持了 BST 的性质。
-有个问题是如何找到后继节点呢？待删除节点的右子树的最小的节点不就是后继嘛，上边我们已经实现了找到最小 key 的方法了。
+說白了就是找到後继并且替换，這裡之所以能保证這種方法是正确的，你會发现替换後依旧是保持了 BST 的性质。
+有個問題是如何找到後继節點呢？待删除節點的右子树的最小的節點不就是後继嘛，上邊我們已經實現了找到最小 key 的方法了。
 
 
 ![](./find_successor.png)
 
-我们开始编写代码实现，和之前的操作类似，我们还是通过辅助函数的形式来实现，这个递归函数会比较复杂，请你仔细理解:
+我們開始编写代碼實現，和之前的操作类似，我們還是通過辅助函数的形式來實現，這個遞迴函数會比较复杂，請你仔细理解:
 
 ```py
     def _bst_remove(self, subtree, key):
-        """删除节点并返回根节点"""
+        """删除節點并返回根節點"""
         if subtree is None:
             return None
         elif key < subtree.key:
@@ -206,15 +206,15 @@ bst = BST.build_from(NODE_LIST)
         elif key > subtree.key:
             subtree.right = self._bst_remove(subtree.right, key)
             return subtree
-        else:  # 找到了需要删除的节点
-            if subtree.left is None and subtree.right is None:    # 叶节点，返回 None 把其父亲指向它的指针置为 None
+        else:  # 找到了需要删除的節點
+            if subtree.left is None and subtree.right is None:    # 叶節點，返回 None 把其父亲指向它的指針置為 None
                 return None
-            elif subtree.left is None or subtree.right is None:  # 只有一个孩子
+            elif subtree.left is None or subtree.right is None:  # 只有一個孩子
                 if subtree.left is not None:
-                    return subtree.left   # 返回它的孩子并让它的父亲指过去
+                    return subtree.left   # 返回它的孩子并让它的父亲指過去
                 else:
                     return subtree.right
-            else:  # 俩孩子，寻找后继节点替换，并从待删节点的右子树中删除后继节点
+            else:  # 俩孩子，寻找後继節點替换，并从待删節點的右子树中删除後继節點
                 successor_node = self._bst_min_node(subtree.right)
                 subtree.key, subtree.value = successor_node.key, successor_node.value
                 subtree.right = self._bst_remove(subtree.right, successor_node.key)
@@ -226,25 +226,25 @@ bst = BST.build_from(NODE_LIST)
         return self._bst_remove(self.root, key)
 ```
 
-完整代码你可以在本章的 bst.py  找到。
-另外推荐一个可以在线演示过程的网址大家可以手动执行下看看效果： https://www.cs.usfca.edu/~galles/visualization/BST.html
+完整代碼你可以在本章的 bst.py  找到。
+另外推荐一個可以在線演示過程的网址大家可以手動执行下看看效果： https://www.cs.usfca.edu/~galles/visualization/BST.html
 
-# 时间复杂度分析
+# 時間複雜度分析
 
-上边介绍的操作时间复杂度和二叉树的形状有关。平均来说时间复杂度是和树的高度成正比的，树的高度 h 是 log(n)，
-但是最坏情况下以上操作的时间复杂度都是 O(n)。为了改善 BST 有很多变种，感兴趣请参考延伸阅读中的内容。
+上邊介绍的操作時間複雜度和二叉树的形状有關。平均來說時間複雜度是和树的高度成正比的，树的高度 h 是 log(n)，
+但是最坏情况下以上操作的時間複雜度都是 O(n)。為了改善 BST 有很多变種，感興趣請参考延伸閱讀中的内容。
 
 ![](./bst_worstcase.png)
 
 
 # 练习题：
-- 请你实现查找 BST 最大值的函数
+- 請你實現查找 BST 最大值的函数
 
 
-# 延伸阅读
-- 《Data Structures and Algorithms in Python》14 章，树的概念和算法还有很多，我们这里介绍最基本的帮你打个基础
-- 了解红黑树。普通二叉查找树有个很大的问题就是难以保证树的平衡，极端情况下某些节点可能会非常深，导致查找复杂度大幅退化。而平衡二叉树就是为了解决这个问题。请搜索对应资料了解下。
-- 了解 mysql 索引使用的 B-Tree 结构(多路平衡查找树)，这个是后端面试数据库的常考点。想想为什么？当元素非常多的时候，二叉树的深度会很深，导致多次磁盘查找。[从B树、B+树、B*树谈到R 树](https://blog.csdn.net/v_JULY_v/article/details/6530142)
+# 延伸閱讀
+- 《Data Structures and Algorithms in Python》14 章，树的概念和算法還有很多，我們這裡介绍最基本的帮你打個基础
+- 了解红黑树。普通二叉查找树有個很大的問題就是难以保证树的平衡，极端情况下某些節點可能會非常深，导致查找複雜度大幅退化。而平衡二叉树就是為了解决這個問題。請搜索對应资料了解下。
+- 了解 mysql 索引使用的 B-Tree 結構(多路平衡查找树)，這個是後端面试數據库的常考點。想想為什么？當元素非常多的时候，二叉树的深度會很深，导致多次磁盘查找。[从B树、B+树、B*树谈到R 树](https://blog.csdn.net/v_JULY_v/article/details/6530142)
 
 
 # Leetcode

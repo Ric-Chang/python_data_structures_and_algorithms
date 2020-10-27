@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# 从数组和列表章复制的代码
+# 从数组和列表章复制的代碼
 
 
 class Array(object):
@@ -28,11 +28,11 @@ class Array(object):
 
 
 class Slot(object):
-    """定义一个 hash 表 数组的槽
-    注意，一个槽有三种状态，看你能否想明白。相比链接法解决冲突，二次探查法删除一个 key 的操作稍微复杂。
-    1.从未使用 HashMap.UNUSED。此槽没有被使用和冲突过，查找时只要找到 UNUSED 就不用再继续探查了
-    2.使用过但是 remove 了，此时是 HashMap.EMPTY，该探查点后边的元素扔可能是有key
-    3.槽正在使用 Slot 节点
+    """定義一個 hash 表 数组的槽
+    注意，一個槽有三種状态，看你能否想明白。相比鏈接法解决冲突，二次探查法删除一個 key 的操作稍微复杂。
+    1.从未使用 HashMap.UNUSED。此槽没有被使用和冲突過，查找时只要找到 UNUSED 就不用再继续探查了
+    2.使用過但是 remove 了，此时是 HashMap.EMPTY，该探查點後面的元素扔可能是有key
+    3.槽正在使用 Slot 節點
     """
 
     def __init__(self, key, value):
@@ -41,8 +41,8 @@ class Slot(object):
 
 class HashTable(object):
 
-    UNUSED = None  # 没被使用过
-    EMPTY = Slot(None, None)  # 使用却被删除过
+    UNUSED = None  # 没被使用過
+    EMPTY = Slot(None, None)  # 使用却被删除過
 
     def __init__(self):
         self._table = Array(8, init=HashTable.UNUSED)   # 保持 2*i 次方
@@ -50,7 +50,7 @@ class HashTable(object):
 
     @property
     def _load_factor(self):
-        # load_factor 超过 0.8 重新分配
+        # load_factor 超過 0.8 重新分配
         return self.length / float(len(self._table))
 
     def __len__(self):
@@ -134,7 +134,7 @@ class HashTable(object):
                 yield slot.key
 
 #########################################
-# 上边是从 哈希表章 拷贝过来的代码，我们会直接继承 HashTable 实现 dict
+# 上邊是从 哈希表章 拷贝過來的代碼，我們會直接继承 HashTable 實現 dict
 #########################################
 
 

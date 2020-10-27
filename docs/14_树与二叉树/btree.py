@@ -4,7 +4,7 @@
 from collections import deque
 
 
-class Queue(object):  # 借助内置的 deque 我们可以迅速实现一个 Queue
+class Queue(object):  # 借助内置的 deque 我們可以迅速實現一個 Queue
     def __init__(self):
         self._items = deque()
 
@@ -67,13 +67,13 @@ class BinTree(object):
             self.preorder_trav(subtree.right)
 
     def preorder_trav_use_stack(self, subtree):
-        """递归的方式其实是计算机帮我们实现了栈结构，我们可以自己显示的用栈来实现"""
+        """遞迴的方式其实是计算机帮我們實現了栈結構，我們可以自己显示的用栈來實現"""
         s = Stack()
         if subtree:
             s.push(subtree)
             while not s.empty():
                 top_node = s.pop()
-                print(top_node.data)    # 注意这里我用了 print，你可以用 yield 产出值然后在调用的地方转成 list
+                print(top_node.data)    # 注意這裡我用了 print，你可以用 yield 产出值然後在调用的地方转成 list
                 if top_node.right:
                     s.push(top_node.right)
                 if top_node.left:
@@ -140,7 +140,7 @@ btree = BinTree.build_from(node_list)
 print('====先序遍历=====')
 btree.preorder_trav(btree.root)
 
-print('====使用 stack 实现先序遍历=====')
+print('====使用 stack 實現先序遍历=====')
 btree.preorder_trav_use_stack(btree.root)
 
 print('====层序遍历=====')
@@ -149,5 +149,5 @@ print('====用队列层序遍历=====')
 btree.layer_trav_use_queue(btree.root)
 
 btree.reverse(btree.root)
-print('====反转之后的结果=====')
+print('====反转之後的結果=====')
 btree.preorder_trav(btree.root)

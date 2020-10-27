@@ -1,4 +1,4 @@
-site_name: Python 数据结构与算法视频教程
+site_name: Python 數據結構与算法影片教程
 theme: readthedocs
 extra_javascript:
     - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
@@ -10,17 +10,17 @@ markdown_extensions:
 pages:
     - 课程简介: 'index.md'
     - 00_课程简介之笨方法学算法: '00_课程简介之笨方法学算法/why_and_how_to_learn.md'
-    - 01_抽象数据类型和面向对象编程: '01_抽象数据类型和面向对象编程/ADT_OOP.md'
+    - 01_抽象數據类型和面向對象编程: '01_抽象數據类型和面向對象编程/ADT_OOP.md'
     - 02_数组和列表: '02_数组和列表/array_and_list.md'
-    - 03_链表: '03_链表/linked_list.md'
+    - 03_鏈表: '03_鏈表/linked_list.md'
     - 04_队列: '04_队列/queue.md'
     - 05_栈: '05_栈/stack.md'
     - 06_算法分析: '06_算法分析/big_o.md'
     - 07_哈希表: '07_哈希表/hashtable.md'
     - 08_字典: '08_字典/dict.md'
     - 09_集合: '09_集合/set.md'
-    - 10_递归: '10_递归/recursion.md'
-    - 11_线性查找与二分查找: '11_线性查找与二分查找/search.md'
+    - 10_遞迴: '10_遞迴/recursion.md'
+    - 11_線性查找与二分查找: '11_線性查找与二分查找/search.md'
     - 12_基本排序算法: '12_基本排序算法/basic_sort.md'
     - 13_高级排序算法:
       - 高级排序算法: '13_高级排序算法/advanced_sorting.md'
@@ -28,8 +28,8 @@ pages:
       - 快速排序: '13_高级排序算法/quick_sort.md'
     - 14_树与二叉树: '14_树与二叉树/tree.md'
     - 15_堆和堆排序: '15_堆与堆排序/heap_and_heapsort.md'
-    - 16_优先级队列: '16_优先级队列/priority_queue.md'
+    - 16_優先级队列: '16_優先级队列/priority_queue.md'
     - 17_二叉查找树: '17_二叉查找树/binary_search_tree.md'
     - 18_图与图的遍历: '18_图与图的遍历/graph.md'
-    - 19_python内置常用算法和数据结构: '19_python内置常用算法和数据结构/builtins.md'
+    - 19_python内置常用算法和數據結構: '19_python内置常用算法和數據結構/builtins.md'
     - 20_面试指南: '20_面试指南/interview.md'
