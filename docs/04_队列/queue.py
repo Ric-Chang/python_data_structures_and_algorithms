@@ -2,7 +2,7 @@
 
 from collections import deque
 
-# NOTE：注意這裡是第三章 linked_list.py 里的内容，為了使文件自包含，我直接拷贝過來的
+# NOTE：注意這裡是第三章 linked_list.py 裡的内容，為了使文件自包含，我直接拷贝過來的
 
 
 class Node(object):
@@ -11,7 +11,7 @@ class Node(object):
         self.next = next
 
     def __str__(self):
-        """方便你打出來调试，复杂的代碼可能需要断點调试"""
+        """方便你打出來調試，复杂的原始碼可能需要断點調試"""
         return '<Node: value: {}, next={}>'.format(self.value, self.next)
 
     __repr__ = __str__
@@ -24,7 +24,7 @@ class LinkedList(object):
 
     def __init__(self, maxsize=None):
         """
-        :param maxsize: int or None, 如果是 None，无限扩充
+        :param maxsize: int or None, 如果是 None，無限扩充
         """
         self.maxsize = maxsize
         self.root = Node()     # 默认 root 節點指向 None
@@ -41,7 +41,7 @@ class LinkedList(object):
         tailnode = self.tailnode
         if tailnode is None:    # 還没有 append 過，length = 0， 追加到 root 後
             self.root.next = node
-        else:     # 否则追加到最後一個節點的後面，并更新最後一個節點是 append 的節點
+        else:     # 否则追加到最後一個節點的後面，並更新最後一個節點是 append 的節點
             tailnode.next = node
         self.tailnode = node
         self.length += 1
@@ -66,7 +66,7 @@ class LinkedList(object):
         yield curnode
 
     def remove(self, value):    # O(n)
-        """ 删除包含值的一個節點，将其前一個節點的 next 指向被查询節點的下一個即可
+        """ 删除包含值的一個節點，將其前一個節點的 next 指向被查询節點的下一個即可
 
         :param value:
         """
@@ -131,11 +131,11 @@ class Queue(object):
         return len(self._item_link_list)
 
     def push(self, value):    # O(1)
-        """ 队尾添加元素 """
+        """ 隊尾添加元素 """
         return self._item_link_list.append(value)
 
     def pop(self):
-        """队列头部删除元素"""
+        """陣列頭部删除元素"""
         if len(self) <= 0:
             raise EmptyError('empty queue')
         return self._item_link_list.popleft()
@@ -154,14 +154,14 @@ def test_queue():
     assert q.pop() == 2
 
     import pytest    # pip install pytest
-    with pytest.raises(EmptyError) as excinfo:   # 我們來測试是否真的抛出了异常
-        q.pop()   # 继续调用會抛出异常
+    with pytest.raises(EmptyError) as excinfo:   # 我們來測試是否真的抛出了异常
+        q.pop()   # 繼续調用會抛出异常
     assert 'empty queue' == str(excinfo.value)
 
 
 class MyQueue:
     """
-    使用 collections.deque 可以迅速實現一個队列
+    使用 collections.deque 可以迅速實現一個陣列
     """
     def __init__(self):
         self.items = deque()

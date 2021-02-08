@@ -29,7 +29,7 @@ class CircularDoubleLinkedList(object):
     def tailnode(self):
         return self.root.prev
 
-    def append(self, value):    # O(1), 你發现一般不用 for 循環的就是 O(1)，有限個步骤
+    def append(self, value):    # O(1), 你發現一般不用 for 循環的就是 O(1)，有限個步骤
         if self.maxsize is not None and len(self) >= self.maxsize:
             raise Exception('LinkedList is Full')
         node = Node(value=value)
@@ -60,7 +60,7 @@ class CircularDoubleLinkedList(object):
 
     def remove(self, node):      # O(1)，傳入node 而不是 value 我們就能實現 O(1) 删除
         """remove
-        :param node  # 在 lru_cache 里實際上根據key 保存了整個node:
+        :param node  # 在 lru_cache 裡實際上根據key 保存了整個node:
         """
         if node is self.root:
             return

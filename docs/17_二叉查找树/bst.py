@@ -16,7 +16,7 @@ class BST(object):
         key_to_node_dict = {}
         for node_dict in node_list:
             key = node_dict['key']
-            key_to_node_dict[key] = BSTNode(key, value=key)   # 這裡值暂时用 和 key一样的
+            key_to_node_dict[key] = BSTNode(key, value=key)   # 這裡值暂時用 和 key一樣的
 
         for node_dict in node_list:
             key = node_dict['key']
@@ -52,7 +52,7 @@ class BST(object):
     def _bst_min_node(self, subtree):
         if subtree is None:
             return None
-        elif subtree.left is None:   # 找到左子树的头
+        elif subtree.left is None:   # 找到左子树的頭
             return subtree
         else:
             return self._bst_min_node(subtree.left)
@@ -62,7 +62,7 @@ class BST(object):
         return node.value if node else None
 
     def _bst_insert(self, subtree, key, value):
-        """ 插入并且返回根節點
+        """ 插入並且返回根節點
 
         :param subtree:
         :param key:
@@ -87,7 +87,7 @@ class BST(object):
             return True
 
     def _bst_remove(self, subtree, key):
-        """删除節點并返回根節點"""
+        """删除節點並返回根節點"""
         if subtree is None:
             return None
         elif key < subtree.key:
@@ -101,10 +101,10 @@ class BST(object):
                 return None
             elif subtree.left is None or subtree.right is None:  # 只有一個孩子
                 if subtree.left is not None:
-                    return subtree.left   # 返回它的孩子并让它的父亲指過去
+                    return subtree.left   # 返回它的孩子並讓它的父亲指過去
                 else:
                     return subtree.right
-            else:  # 俩孩子，寻找後继節點替换，并删除其右子树的後继節點，同时更新其右子树
+            else:  # 俩孩子，寻找後繼節點替換，並删除其右子树的後繼節點，同時更新其右子树
                 successor_node = self._bst_min_node(subtree.right)
                 subtree.key, subtree.value = successor_node.key, successor_node.value
                 subtree.right = self._bst_remove(subtree.right, successor_node.key)

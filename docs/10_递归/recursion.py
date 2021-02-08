@@ -44,11 +44,11 @@ class Stack(object):
 
 def print_num_use_stack(n):
     s = Stack()
-    while n > 0:    # 不断将参数入栈
+    while n > 0:    # 不断將参數入堆疊
         s.push(n)
         n -= 1
 
-    while not s.is_empty():    # 参数弹出
+    while not s.is_empty():    # 参數弹出
         print(s.pop())
 
 

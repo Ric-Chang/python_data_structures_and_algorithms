@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-# 第二章拷贝的 Array 代碼
+# 第二章拷贝的 Array 原始碼
 
 
 class Array(object):
@@ -35,18 +35,18 @@ class MaxHeap(object):
     """
     Heaps:
     完全二叉树，最大堆的非叶子節點的值都比孩子大，最小堆的非叶子結點的值都比孩子小
-    Heap包含兩個属性，order property 和 shape property(a complete binary tree)，在插入
-    一個新節點的时候，始终要保持這兩個属性
-    插入操作：保持堆属性和完全二叉树属性, sift-up 操作维持堆属性
-    extract操作：只获取根節點數據，并把树最底层最右節點copy到根節點後，sift-down操作维持堆属性
+    Heap包含兩個屬性，order property 和 shape property(a complete binary tree)，在插入
+    一個新節點的時候，始终要保持這兩個屬性
+    插入操作：保持堆屬性和完全二叉树屬性, sift-up 操作维持堆屬性
+    extract操作：只获取根節點數據，並把树最底层最右節點copy到根節點後，sift-down操作维持堆屬性
 
-    用数組實現heap，從根節點開始，從上往下從左到右给每個節點编号，则根據完全二叉树的
+    用數組實現heap，從根節點開始，從上往下從左到右给每個節點编号，则根據完全二叉树的
     性质，给定一個節點i， 其父亲和孩子節點的编号分别是:
         parent = (i-1) // 2
         left = 2 * i + 1
         rgiht = 2 * i + 2
-    使用数組實現堆一方面效率更高，節省树節點的内存占用，一方面還可以避免复杂的指針操作，减少
-    调试难度。
+    使用數組實現堆一方面效率更高，節省树節點的記憶體占用，一方面還可以避免复杂的指針操作，减少
+    調試难度。
 
     """
 
@@ -68,7 +68,7 @@ class MaxHeap(object):
     def _siftup(self, ndx):
         if ndx > 0:
             parent = int((ndx-1)/2)
-            if self._elements[ndx] > self._elements[parent]:    # 如果插入的值大于 parent，一直交换
+            if self._elements[ndx] > self._elements[parent]:    # 如果插入的值大於 parent，一直交換
                 self._elements[ndx], self._elements[parent] = self._elements[parent], self._elements[ndx]
                 self._siftup(parent)    # 遞迴
 

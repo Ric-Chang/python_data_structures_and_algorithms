@@ -1,11 +1,11 @@
-# 優先级队列
-你可能比较奇怪，队列不是早就講了嘛。這裡之所以放到這裡講優先级队列，是因為雖然名字有队列，
-但其實是使用堆來實現的。上一章講完了堆，這一章我們就趁热打铁來實現一個優先级队列。
+# 優先级陣列
+你可能比较奇怪，陣列不是早就講了嘛。這裡之所以放到這裡講優先级陣列，是因為雖然名字有陣列，
+但其實是使用堆來實現的。上一章講完了堆，這一章我們就趁热打铁來實現一個優先级陣列。
 
 
-# 實現優先级队列
-優先级队列(Priority Queue) 顾名思義，就是入队的时候可以给一個優先级，通常是個数字或者時間戳等，
-當出队的时候我們希望按照给定的優先级出队，我們按照 TDD(測试驱動開發) 的方式先來写測试代碼：
+# 實現優先级陣列
+優先级陣列(Priority Queue) 顧名思義，就是入隊的時候可以给一個優先级，通常是個數字或者時間戳等，
+當出隊的時候我們希望按照给定的優先级出隊，我們按照 TDD(測試驱動開發) 的方式先來写測試原始碼：
 
 ```py
 def test_priority_queue():
@@ -22,7 +22,7 @@ def test_priority_queue():
     assert res == ['purple', 'orange', 'black', 'white']
 ```
 
-上邊就是期望的行為，写完測试代碼後我們來编写優先级队列的代碼，按照出队的时候最大優先级先出的顺序：
+上邊就是期望的行為，写完測試原始碼後我們來编写優先级陣列的原始碼，按照出隊的時候最大優先级先出的顺序：
 
 
 ```py
@@ -32,9 +32,9 @@ class PriorityQueue(object):
         self._maxheap = MaxHeap(maxsize)
 
     def push(self, priority, value):
-        # 注意這裡把這個 tuple push 进去，python 比较 tuple 從第一個開始比较
-        # 這样就很巧妙地實現了按照優先级排序
-        entry = (priority, value)    # 入队的时候會根據 priority 维持堆的特性
+        # 注意這裡把這個 tuple push 進去，python 比较 tuple 從第一個開始比较
+        # 這樣就很巧妙地實現了按照優先级排序
+        entry = (priority, value)    # 入隊的時候會根據 priority 维持堆的特性
         self._maxheap.add(entry)
 
     def pop(self, with_priority=False):
@@ -50,4 +50,4 @@ class PriorityQueue(object):
 
 
 # 练习题
-- 請你實現按照小優先级先出队的顺序的優先级队列
+- 請你實現按照小優先级先出隊的顺序的優先级陣列

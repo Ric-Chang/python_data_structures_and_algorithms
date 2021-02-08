@@ -9,13 +9,13 @@ def merge_sort(seq):
         left_half = merge_sort(seq[:mid])
         right_half = merge_sort(seq[mid:])
 
-        # 合并兩個有序的数組
+        # 合並兩個有序的數組
         new_seq = merge_sorted_list(left_half, right_half)
         return new_seq
 
 
 def merge_sorted_list(sorted_a, sorted_b):
-    """ 合并兩個有序序列，返回一個新的有序序列
+    """ 合並兩個有序序列，返回一個新的有序序列
 
     :param sorted_a:
     :param sorted_b:
@@ -32,7 +32,7 @@ def merge_sorted_list(sorted_a, sorted_b):
             new_sorted_seq.append(sorted_b[b])
             b += 1
 
-    # 如果 a或b 中還有剩余元素，需要放到最後
+    # 如果 a或b 中還有剩餘元素，需要放到最後
     if a < length_a:
         new_sorted_seq.extend(sorted_a[a:])
     else:

@@ -67,13 +67,13 @@ class BinTree(object):
             self.preorder_trav(subtree.right)
 
     def preorder_trav_use_stack(self, subtree):
-        """遞迴的方式其實是计算機帮我們實現了栈結構，我們可以自己显示的用栈來實現"""
+        """遞迴的方式其實是計算機帮我們實現了堆疊結構，我們可以自己显示的用堆疊來實現"""
         s = Stack()
         if subtree:
             s.push(subtree)
             while not s.empty():
                 top_node = s.pop()
-                print(top_node.data)    # 注意這裡我用了 print，你可以用 yield 产出值然後在调用的地方转成 list
+                print(top_node.data)    # 注意這裡我用了 print，你可以用 yield 产出值然後在調用的地方轉成 list
                 if top_node.right:
                     s.push(top_node.right)
                 if top_node.left:
@@ -107,7 +107,7 @@ class BinTree(object):
                     next_nodes.append(node.left)
                 if node.right:
                     next_nodes.append(node.right)
-            cur_nodes = next_nodes  # 继续遍历下一层
+            cur_nodes = next_nodes  # 繼续遍历下一层
             next_nodes = []
 
     def layer_trav_use_queue(self, subtree):
@@ -145,9 +145,9 @@ btree.preorder_trav_use_stack(btree.root)
 
 print('====层序遍历=====')
 btree.layer_trav(btree.root)
-print('====用队列层序遍历=====')
+print('====用陣列层序遍历=====')
 btree.layer_trav_use_queue(btree.root)
 
 btree.reverse(btree.root)
-print('====反转之後的結果=====')
+print('====反轉之後的結果=====')
 btree.preorder_trav(btree.root)

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # https://docs.python.org/2/library/array.html
-from array import array    # python 提供的比较原始的 array 类
+from array import array    # python 提供的比较原始的 array 類
 
 
 arr = array('u', 'asdf')
@@ -9,7 +9,7 @@ arr = array('u', 'asdf')
 print(arr[0], arr[1], arr[2], arr[3])
 
 
-# 實現定长的 Array ADT，省略了邊界检查等
+# 實現定長的 Array ADT，省略了邊界檢查等
 
 class Array(object):
 

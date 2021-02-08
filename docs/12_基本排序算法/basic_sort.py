@@ -7,17 +7,17 @@ import random
 def bubble_sort(seq):  # O(n^2), n(n-1)/2 = 1/2(n^2 + n)
     n = len(seq)
     for i in range(n-1):
-        print(seq)    # 我打印出來让你看清楚每一轮最高、次高、次次高...的小朋友會冒泡到右邊
-        for j in range(n-1-i):  # 這裡之所以 n-1 還需要 减去 i 是因為每一轮冒泡最大的元素都會冒泡到最後，无需再比较
+        print(seq)    # 我打印出來讓你看清楚每一輪最高、次高、次次高...的小朋友會冒泡到右邊
+        for j in range(n-1-i):  # 這裡之所以 n-1 還需要 减去 i 是因為每一輪冒泡最大的元素都會冒泡到最後，無需再比较
             if seq[j] > seq[j+1]:
                 seq[j], seq[j+1] = seq[j+1], seq[j]
         print(seq)
 
 
 def test_bubble_sort():
-    seq = list(range(10))  # 注意 python3 返回迭代器，所以我都用 list 强转了，python2 range 返回的就是 list
-    random.shuffle(seq)   # shuffle inplace 操作，打乱数組
-    sorted_seq = sorted(seq)  # 注意呦，内置的 sorted 就不是 inplace 的，它返回一個新的数組，不影响傳入的参数
+    seq = list(range(10))  # 注意 python3 返回迭代器，所以我都用 list 强轉了，python2 range 返回的就是 list
+    random.shuffle(seq)   # shuffle inplace 操作，打乱數組
+    sorted_seq = sorted(seq)  # 注意呦，内置的 sorted 就不是 inplace 的，它返回一個新的數組，不影響傳入的参數
     bubble_sort(seq)
     assert seq == sorted_seq
 
@@ -42,15 +42,15 @@ def test_select_sort():
 
 
 def insertion_sort(seq):
-    """ 每次挑選下一個元素插入已經排序的数組中,初始时已排序数組只有一個元素"""
+    """ 每次挑選下一個元素插入已經排序的數組中,初始時已排序數組只有一個元素"""
     n = len(seq)
     print(seq)
     for i in range(1, n):
-        value = seq[i]    # 保存當前位置的值，因為转移的過程中它的位置可能被覆盖
-        # 找到這個值的合适位置，使得前邊的数組有序 [0,i] 有序
+        value = seq[i]    # 保存當前位置的值，因為轉移的過程中它的位置可能被覆盖
+        # 找到這個值的合适位置，使得前邊的數組有序 [0,i] 有序
         pos = i
         while pos > 0 and value < seq[pos-1]:
-            seq[pos] = seq[pos-1]  # 如果前邊的元素比它大，就让它一直前移
+            seq[pos] = seq[pos-1]  # 如果前邊的元素比它大，就讓它一直前移
             pos -= 1
         seq[pos] = value    # 找到了合适的位置赋值就好
         print(seq)

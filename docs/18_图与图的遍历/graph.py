@@ -34,7 +34,7 @@ def bfs(graph, start):
     search_queue = Queue()
     search_queue.push(start)
     searched = set()
-    while search_queue:   # 队列不為空就继续
+    while search_queue:   # 陣列不為空就繼续
         cur_node = search_queue.pop()
         if cur_node not in searched:
             print(cur_node)
@@ -86,7 +86,7 @@ def dfs_use_stack(graph, start):
         if cur_node not in searched:
             print(cur_node)
             searched.add(cur_node)
-            # 請讀者思考這裡我為啥加了 reversed，其實不加上是可以的，你看下代碼输出
+            # 請讀者思考這裡我為啥加了 reversed，其實不加上是可以的，你看下原始碼輸出
             for node in reversed(graph[cur_node]):
                 stack.push(node)
 

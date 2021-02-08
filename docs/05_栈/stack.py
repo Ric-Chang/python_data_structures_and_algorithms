@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# NOTE: 這裡拷贝的 double_link_list.py 里的代碼
+# NOTE: 這裡拷贝的 double_link_list.py 裡的原始碼
 
 from collections import deque
 
@@ -32,7 +32,7 @@ class CircularDoubleLinkedList(object):
     def tailnode(self):
         return self.root.prev
 
-    def append(self, value):    # O(1), 你發现一般不用 for 循環的就是 O(1)，有限個步骤
+    def append(self, value):    # O(1), 你發現一般不用 for 循環的就是 O(1)，有限個步骤
         if self.maxsize is not None and len(self) >= self.maxsize:
             raise Exception('LinkedList is Full')
         node = Node(value=value)
@@ -63,7 +63,7 @@ class CircularDoubleLinkedList(object):
 
     def remove(self, node):      # O(1)，傳入node 而不是 value 我們就能實現 O(1) 删除
         """remove
-        :param node  # 在 lru_cache 里實際上根據key 保存了整個node:
+        :param node  # 在 lru_cache 裡實際上根據key 保存了整個node:
         """
         if node is self.root:
             return
@@ -102,7 +102,7 @@ class CircularDoubleLinkedList(object):
 ############################################################
 
 
-class Deque(CircularDoubleLinkedList):   # 注意這裡我們用到了继承，嗯，貌似我說過不會用啥 OOP 特性的，抱歉
+class Deque(CircularDoubleLinkedList):   # 注意這裡我們用到了繼承，嗯，貌似我說過不會用啥 OOP 特性的，抱歉
 
     def pop(self):
         """删除尾節點"""
@@ -144,7 +144,7 @@ def test_deque():
 
 class Stack(object):
     def __init__(self):
-        self.deque = Deque()   # 你可以很容易替换為 python 内置的 collections.deque
+        self.deque = Deque()   # 你可以很容易替換為 python 内置的 collections.deque
 
     def push(self, value):
         self.deque.append(value)
@@ -179,7 +179,7 @@ def test_stack():
     assert s.pop() == 0
 
     import pytest    # pip install pytest
-    with pytest.raises(Exception) as excinfo:   # 我們來測试是否真的抛出了异常
+    with pytest.raises(Exception) as excinfo:   # 我們來測試是否真的抛出了异常
         s.pop()
     assert 'empty' in str(excinfo.value)
 

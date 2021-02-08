@@ -51,7 +51,7 @@ def binary_search_recursive(sorted_array, beg, end, val):
 
 
 def test_binary_search_recursive():
-    # 我們測试所有值和邊界條件
+    # 我們測試所有值和邊界條件
     a = list(range(10))
     for i in a:
         assert binary_search_recursive(a, 0, len(a), i) == i

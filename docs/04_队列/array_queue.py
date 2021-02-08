@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-# NOTE: 從 array_and_list 第一章拷贝的代碼
+# NOTE: 從 array_and_list 第一章拷贝的原始碼
 class Array(object):
 
     def __init__(self, size=32):
@@ -59,7 +59,7 @@ def test_queue():
     for i in range(size):
         q.push(i)
 
-    with pytest.raises(FullError) as excinfo:   # 我們來測试是否真的抛出了异常
+    with pytest.raises(FullError) as excinfo:   # 我們來測試是否真的抛出了异常
         q.push(size)
     assert 'full' in str(excinfo.value)
 
