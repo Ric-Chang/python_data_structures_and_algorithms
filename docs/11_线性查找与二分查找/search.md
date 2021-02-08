@@ -51,7 +51,7 @@ assert linear_search_recusive(number_list, 8) == -1
 assert linear_search_recusive(number_list, 7) == 7
 assert linear_search_recusive(number_list, 0) == 0
 ```
-這裡的 assert 我多寫了幾個，包括正常情况、异常情况和邊界值等，因為遞迴比较容易出错。注意這裡的兩個遞迴出口。
+這裡的 assert 我多寫了幾個，包括正常情况、異常情况和邊界值等，因為遞迴比较容易出错。注意這裡的兩個遞迴出口。
 當然業務原始碼裡如果碰到這種問題我們肯定是選上邊最直白的方式來實現，要不你的同事肯定想打你。
 
 # 二分查找
@@ -72,7 +72,7 @@ def binary_search(sorted_array, val):
     end = len(sorted_array) - 1
 
     while beg <= end:
-        mid = int((beg + end) / 2)  # beg + (end-beg)/2， 為了屏蔽 python 2/3 差异我用了强轉
+        mid = int((beg + end) / 2)  # beg + (end-beg)/2， 為了屏蔽 python 2/3 差異我用了强轉
         if sorted_array[mid] == val:
             return mid
         elif sorted_array[mid] > val:
@@ -89,7 +89,7 @@ def test_binary_search():
     assert binary_search(a, 1) == 1
     assert binary_search(a, -1) == -1
 
-    # 异常值
+    # 異常值
     assert binary_search(None, 1) == -1
 
     # 邊界值
@@ -98,16 +98,16 @@ def test_binary_search():
 
 
 # 思考题
-- 给你個挑战，用遞迴來實現本章的二分查找。你要十分注意邊界條件，注意用單測測試呦，在你寫原始碼的時候，可能會碰到邊界問題或者無穷遞迴等。 如果你想不起來，可以看看本章的原始碼示例
-- 二分查找有一個变形，比如我們想在一個有序數組中插入一個值之後，數組仍保持有序，請你找出這個位置。(bisect 模塊)
+- 给你個挑戰，用遞迴來實現本章的二分查找。你要十分注意邊界條件，注意用單測測試呦，在你寫原始碼的時候，可能會碰到邊界問題或者無穷遞迴等。 如果你想不起來，可以看看本章的原始碼示例
+- 二分查找有一個變形，比如我們想在一個有序數組中插入一個值之後，數組仍保持有序，請你找出這個位置。(bisect 模塊)
 
 
 # 延伸閱讀
-這裡没给鏈接，請善用 google 等搜索引擎和 Dash(mac) 等文档查询工具，在你學習原始碼的過程中你會非常頻繁地使用它們。
-或者如果你有時間也可以跳轉到這些模塊的源碼，看看它們的實現方式。標准库都是些高手寫的，肯定能學到一些姿势。
+這裡没给鏈接，請善用 google 等搜索引擎和 Dash(mac) 等文件查询工具，在你學習原始碼的過程中你會非常頻繁地使用它們。
+或者如果你有時間也可以跳轉到這些模塊的源碼，看看它們的實現方式。標準庫都是些高手寫的，肯定能學到一些姿势。
 
-- 閱讀 python 文档關於二分的 bisect 模塊。
-- 閱讀 python 文档 itertools 相關模塊和常見的幾個函數 takewhile, dropwhile, from_iterable, count, tee 等用法
+- 閱讀 python 文件關於二分的 bisect 模塊。
+- 閱讀 python 文件 itertools 相關模塊和常見的幾個函數 takewhile, dropwhile, from_iterable, count, tee 等用法
 - [每個程序员都應該會點形式化證明](https://zhuanlan.zhihu.com/p/35364999?group_id=967109293607129088)
 
 

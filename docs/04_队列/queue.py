@@ -2,7 +2,7 @@
 
 from collections import deque
 
-# NOTE：注意這裡是第三章 linked_list.py 裡的内容，為了使文件自包含，我直接拷贝過來的
+# NOTE：注意這裡是第三章 linked_list.py 裡的内容，為了使文件自包含，我直接拷貝過來的
 
 
 class Node(object):
@@ -118,7 +118,7 @@ class LinkedList(object):
 
 
 class EmptyError(Exception):
-    """自定義异常"""
+    """自定義異常"""
     pass
 
 
@@ -154,8 +154,8 @@ def test_queue():
     assert q.pop() == 2
 
     import pytest    # pip install pytest
-    with pytest.raises(EmptyError) as excinfo:   # 我們來測試是否真的抛出了异常
-        q.pop()   # 繼续調用會抛出异常
+    with pytest.raises(EmptyError) as excinfo:   # 我們來測試是否真的抛出了異常
+        q.pop()   # 繼续調用會抛出異常
     assert 'empty queue' == str(excinfo.value)
 
 

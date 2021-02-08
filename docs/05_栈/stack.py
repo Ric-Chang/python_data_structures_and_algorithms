@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# NOTE: 這裡拷贝的 double_link_list.py 裡的原始碼
+# NOTE: 這裡拷貝的 double_link_list.py 裡的原始碼
 
 from collections import deque
 
@@ -179,7 +179,7 @@ def test_stack():
     assert s.pop() == 0
 
     import pytest    # pip install pytest
-    with pytest.raises(Exception) as excinfo:   # 我們來測試是否真的抛出了异常
+    with pytest.raises(Exception) as excinfo:   # 我們來測試是否真的抛出了異常
         s.pop()
     assert 'empty' in str(excinfo.value)
 

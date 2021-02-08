@@ -10,14 +10,14 @@
 數組是最常用到的一種線性結構，其實 python 内置了一個 array 模塊，但是大部人甚至從來没用過它。
 Python 的 array 是記憶體連續、存儲的都是同一數據類型的結構，而且只能存數值和字符。
 
-我建議你課下看下 array 的文档：https://docs.python.org/2/library/array.html
+我建議你課下看下 array 的文件：https://docs.python.org/2/library/array.html
 
 你可能很少會使用到它(我推荐你用 numpy.array)，我將在影片裡簡單介绍下它的使用和工作方式，最常用的還是接下來要說的 list，
 本章最後我們會用 list 來實現一個固定長度、並且支持所有 Python 數據類型的數組 Array.
 
 
 # 列表 list
-如果你學過 C++，list 其實和 C++ STL（標准模板库）中的 vector 很類似，它可能是你的 Python 學習中使用最頻繁的數據結構之一。
+如果你學過 C++，list 其實和 C++ STL（標準模板庫）中的 vector 很類似，它可能是你的 Python 學習中使用最頻繁的數據結構之一。
 這裡我們不再去自己實現 list，因為這是個 Python 提供的非常基础的數據類型，我會在影片中講解它的工作方式和記憶體分配策略，
 避免使用過程中碰到一些坑。當然如果你有毅力或者興趣的了解底层是如何實現的，可以看看 cpython 解释器的具體實現。
 

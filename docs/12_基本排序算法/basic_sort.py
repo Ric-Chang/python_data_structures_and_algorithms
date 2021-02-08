@@ -15,7 +15,7 @@ def bubble_sort(seq):  # O(n^2), n(n-1)/2 = 1/2(n^2 + n)
 
 
 def test_bubble_sort():
-    seq = list(range(10))  # 注意 python3 返回迭代器，所以我都用 list 强轉了，python2 range 返回的就是 list
+    seq = list(range(10))  # 注意 python3 返回替代器，所以我都用 list 强轉了，python2 range 返回的就是 list
     random.shuffle(seq)   # shuffle inplace 操作，打乱數組
     sorted_seq = sorted(seq)  # 注意呦，内置的 sorted 就不是 inplace 的，它返回一個新的數組，不影響傳入的参數
     bubble_sort(seq)

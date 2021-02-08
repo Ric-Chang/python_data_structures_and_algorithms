@@ -9,13 +9,13 @@
 - remove(key): 删除一個 key，這裡其實不是真删除，而是標记為 Empty
 
 字典最常使用的场景就是 k,v 存儲，經常用作缓存，它的 key 值是唯一的。
-内置库 collections.OrderedDict 還保持了 key 的添加顺序，其實用我們之前實現的鏈表也能自己實現一個 OrderedDict。
+内置庫 collections.OrderedDict 還保持了 key 的添加順序，其實用我們之前實現的鏈表也能自己實現一個 OrderedDict。
 
 # 實現 dict ADT
 
 其實上邊 HashTable 實現的三個基本方法就是我們使用字典最常用的三個基本方法， 這裡我們繼承一下這個類，
 然後實現更多 dict 支持的方法，items(), keys(), values()。不過需要注意的是，在 python2 和 python3 裡這些方法
-的返回是不同的，python3 裡一大改進就是不再返回浪费記憶體的 列表，而是返回迭代器，你要获得列表必须用 list() 轉換成列表。 這裡我們實現 python3 的方式返回迭代器。
+的返回是不同的，python3 裡一大改進就是不再返回浪费記憶體的 列表，而是返回替代器，你要獲得列表必须用 list() 轉換成列表。 這裡我們實現 python3 的方式返回替代器。
 
 
 ```py
@@ -26,7 +26,7 @@ class DictADT(HashTable):
 影片裡我們將演示如何實現這些方法，並且寫單測驗證正確性。
 
 # Hashable
-作為 dict 的 key 必须是可哈希的，也就是說不能是 list 等可变對象。不信你在 ipython 裡運行如下原始碼：
+作為 dict 的 key 必须是可哈希的，也就是說不能是 list 等可變對象。不信你在 ipython 裡運行如下原始碼：
 
 ```py
 d = dict()
@@ -34,7 +34,7 @@ d[[1]] = 1
 # TypeError: unhashable type: 'list'
 ```
 
-我引用 python 文档裡的說法，大家可以自己理解下：
+我引用 python 文件裡的說法，大家可以自己理解下：
 
 ```
 An object is hashable if it has a hash value which never changes during its lifetime (it needs a __hash__() method), and can be compared to other objects (it needs an __eq__() or __cmp__() method). Hashable objects which compare equal must have the same hash value.
@@ -48,8 +48,8 @@ All of Python’s immutable built-in objects are hashable, while no mutable cont
 # 思考题：
 - 你能在哈希表的基础上實現 dict 的其他操作嗎？
 - 對於 python 來說，哪些内置數據類型是可哈希的呢？list, dict, tuple, set 等類型哪些可以作為字典的 key 呢?
-- 你了解可变對象和不可变對象的區别嗎？
+- 你了解可變對象和不可變對象的區别嗎？
 - 你了解 python 的 hash 函數嗎？你了解 python 的`__hash__`  和 `__eq__` 魔術方法嗎？它們何時被調用
 
 # 延伸閱讀
-閱讀 python 文档關於 dict 的相關内容
+閱讀 python 文件關於 dict 的相關内容
