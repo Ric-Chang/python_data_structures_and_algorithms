@@ -35,7 +35,7 @@
 - 树的宽度(width): 二叉树的宽度指的是包含最多節點的层级的節點數
 - 树的 size：二叉树的節點总個數。
 
-一棵 size 為 n 的二叉树高度最多可以是 n，最小的高度是 $ \lfloor lgn \rfloor + 1 $，這裡 log 以 2 為底簡写為
+一棵 size 為 n 的二叉树高度最多可以是 n，最小的高度是 $ \lfloor lgn \rfloor + 1 $，這裡 log 以 2 為底簡寫為
 lgn，和算法導論保持一致。這個結果你只需要用高中的累加公式就可以得到。
 
 # 一些特殊的二叉树
@@ -77,7 +77,7 @@ class BinTree(object):
         self.root = root
 ```
 
-怎麼构造上图中的二叉树呢，似乎其他課本没找到啥例子(有些例子是写了一堆嵌套節點來定義，很难搞清楚层次關系)，我自己定義了一種方法，首先我們輸入節點信息，仔细看下邊原始碼，叶子節點的 left 和 right 都是 None，並且只有一個根節點 A:
+怎麼构造上图中的二叉树呢，似乎其他課本没找到啥例子(有些例子是寫了一堆嵌套節點來定義，很难搞清楚层次關系)，我自己定義了一種方法，首先我們輸入節點信息，仔细看下邊原始碼，叶子節點的 left 和 right 都是 None，並且只有一個根節點 A:
 
 ```py
 node_list = [
@@ -248,7 +248,7 @@ class Queue(object):  # 借助内置的 deque 我們可以迅速實現一個 Que
 
 
 # 反轉二叉树
-之所以單拎出來說這個是因為 mac 下著名的 brew 工具作者据說是因為面試 google 白板编程没写出來反轉二叉树跪了。然後人家就去了苹果 😂。其實吧和遍历操作相比也没啥太大區别，遞迴交換就是了：
+之所以單拎出來說這個是因為 mac 下著名的 brew 工具作者据說是因為面試 google 白板编程没寫出來反轉二叉树跪了。然後人家就去了苹果 😂。其實吧和遍历操作相比也没啥太大區别，遞迴交換就是了：
 
 ```py
     def reverse(self, subtree):
@@ -259,7 +259,7 @@ class Queue(object):  # 借助内置的 deque 我們可以迅速實現一個 Que
 ```
 
 
-# 练习题
+# 練習题
 - 請你完成二叉树的中序遍历和後序遍历以及單元測試
 - 树的遍历我們用了 print，請你嘗試換成一個 callback，這樣就能自定義處理树節點的方式了。
 - 請问树的遍历操作時間複雜度是多少？假设它的 size 是 n
@@ -272,7 +272,7 @@ class Queue(object):  # 借助内置的 deque 我們可以迅速實現一個 Que
 -  [https://www.geeksforgeeks.org/iterative-preorder-traversal/](https://www.geeksforgeeks.org/iterative-preorder-traversal/)
 
 
-# Leetcode 练习
+# Leetcode 練習
 
 - [leetcode binary-tree-preorder-traversal](https://leetcode.com/problems/binary-tree-preorder-traversal/)
 二叉树的先序遍历
@@ -284,7 +284,7 @@ class Queue(object):  # 借助内置的 deque 我們可以迅速實現一個 Que
 二叉树的後序遍历
 
 - [leetcode binary-tree-right-side-view](https://leetcode.com/problems/binary-tree-right-side-view/description/)
-使用树的层序遍历我們能實現一個树的左右视图，比如從一個二叉树的左邊能看到哪些節點。 請你嘗試做這個练习题
+使用树的层序遍历我們能實現一個树的左右视图，比如從一個二叉树的左邊能看到哪些節點。 請你嘗試做這個練習题
 
 - [leetcode construct-binary-tree-from-preorder-and-postorder-traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal/submissions/)
 根據二叉树的 前序和後序遍历，返回一颗完整的二叉树。

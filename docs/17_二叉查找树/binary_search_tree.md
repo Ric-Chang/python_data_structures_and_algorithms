@@ -193,7 +193,7 @@ bst = BST.build_from(NODE_LIST)
 
 ![](./find_successor.png)
 
-我們開始编写原始碼實現，和之前的操作類似，我們還是通過辅助函數的形式來實現，這個遞迴函數會比较复杂，請你仔细理解:
+我們開始编寫原始碼實現，和之前的操作類似，我們還是通過辅助函數的形式來實現，這個遞迴函數會比较复杂，請你仔细理解:
 
 ```py
     def _bst_remove(self, subtree, key):
@@ -214,7 +214,7 @@ bst = BST.build_from(NODE_LIST)
                     return subtree.left   # 返回它的孩子並讓它的父亲指過去
                 else:
                     return subtree.right
-            else:  # 俩孩子，寻找後繼節點替換，並從待删節點的右子树中删除後繼節點
+            else:  # 俩孩子，尋找後繼節點替換，並從待删節點的右子树中删除後繼節點
                 successor_node = self._bst_min_node(subtree.right)
                 subtree.key, subtree.value = successor_node.key, successor_node.value
                 subtree.right = self._bst_remove(subtree.right, successor_node.key)
@@ -237,7 +237,7 @@ bst = BST.build_from(NODE_LIST)
 ![](./bst_worstcase.png)
 
 
-# 练习题：
+# 練習题：
 - 請你實現查找 BST 最大值的函數
 
 

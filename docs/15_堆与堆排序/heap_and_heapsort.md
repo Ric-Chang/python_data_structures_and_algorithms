@@ -38,7 +38,7 @@ right = 2 * i + 2
 超出下標表示没有對应的孩子節點。
 
 # 實現一個最大堆
-我們將在影片裡详细描述和编写各個操作
+我們將在影片裡详细描述和编寫各個操作
 
 ```py
 class MaxHeap(object):
@@ -80,7 +80,7 @@ class MaxHeap(object):
         largest = ndx
         if (left < self._count and     # 有左孩子
                 self._elements[left] >= self._elements[largest] and
-                self._elements[left] >= self._elements[right]):  # 原书這個地方没写實際上找的未必是largest
+                self._elements[left] >= self._elements[right]):  # 原书這個地方没寫實際上找的未必是largest
             largest = left
         elif right < self._count and self._elements[right] >= self._elements[largest]:
             largest = right
@@ -100,7 +100,7 @@ def test_maxheap():
 ```
 
 # 實現堆排序
-上邊我們實現了最大堆，每次我們都能 extract 一個最大的元素了，於是一個倒序排序函數就能很容易写出來了：
+上邊我們實現了最大堆，每次我們都能 extract 一個最大的元素了，於是一個倒序排序函數就能很容易寫出來了：
 
 ```py
 def heapsort_reverse(array):
@@ -123,7 +123,7 @@ def test_heapsort_reverse():
 
 # Python 裡的 heapq 模塊
 python 其實自带了 heapq 模塊，用來實現堆的相關操作，原理是類似的。請你閱讀相關文档並使用内置的 heapq 模塊完成堆排序。
-一般我們刷题或者写業務原始碼的時候，使用這個内置的 heapq 模塊就够用了，内置的實現了是最小堆。
+一般我們刷题或者寫業務原始碼的時候，使用這個内置的 heapq 模塊就够用了，内置的實現了是最小堆。
 
 
 # Top K 問題
@@ -141,7 +141,7 @@ python 其實自带了 heapq 模塊，用來實現堆的相關操作，原理是
 慢慢就被替換成了最大的那些值，並且最後堆顶是最大的 topk 個值中的最小值。
 （比如1000個數找10個，最後堆裡剩餘的是 [990, 991, 992, 996, 994, 993, 997, 998, 999, 995]，第一個 990 最小)
 
-按照這個思路很容易写出來原始碼：
+按照這個思路很容易寫出來原始碼：
 
 ```py
 import heapq
@@ -190,7 +190,7 @@ if __name__ == '__main__':
 ```
 
 
-# 练习题
+# 練習题
 
 - 這裡我用最大堆實現了一個 heapsort_reverse 函數，請你實現一個正序排序的函數。似乎不止一種方式
 - 請你實現一個最小堆，你需要修改那些原始碼呢？

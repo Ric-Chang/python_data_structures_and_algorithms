@@ -1,8 +1,8 @@
 # 字典 dict
 
 上一章我們介绍了哈希表，其實 python 内置的 dict 就是用哈希表實現的，所以這一章實現 dict 就非常簡單了。
-當然 cpython 使用的是 c 语言實現的，远比我們写的复杂得多 (cpython/Objects/dictobject.c)。
-上一章我們用 python 自己写的一個 Array 來代表定長數組，然後用它實現的 HashTable，它支持三個最基本的方法
+當然 cpython 使用的是 c 语言實現的，远比我們寫的复杂得多 (cpython/Objects/dictobject.c)。
+上一章我們用 python 自己寫的一個 Array 來代表定長數組，然後用它實現的 HashTable，它支持三個最基本的方法
 
 - add(key ,value): 有 key 则更新，否则插入
 - get(key, default=None): 或者 key 的值，不存在返回默认值 None
@@ -23,7 +23,7 @@ class DictADT(HashTable):
     pass
 ```
 
-影片裡我們將演示如何實現這些方法，並且写單測驗證正確性。
+影片裡我們將演示如何實現這些方法，並且寫單測驗證正確性。
 
 # Hashable
 作為 dict 的 key 必须是可哈希的，也就是說不能是 list 等可变對象。不信你在 ipython 裡運行如下原始碼：
