@@ -119,4 +119,4 @@ $n!$      | 階乘         | 旅行商問題         |
 如果你對數學感興趣，建議你閱讀《算法導論》『函數的增長』這一節 和《Data Structures and Algorithms in Python》第4章。
 
 
-(本章我用了 [MathJax](https://www.zybuluo.com/codeep/note/163962) 來书写一些簡單的數學公式，使用 "$"包含起來的就是數學公式)
+(本章我用了 [MathJax](https://www.zybuluo.com/codeep/note/163962) 來书寫一些簡單的數學公式，使用 "$"包含起來的就是數學公式)
